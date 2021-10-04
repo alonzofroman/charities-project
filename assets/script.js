@@ -77,7 +77,7 @@ function pullGlobalCharities() {
   .done(function(response){
     let finalGlobalResults = response.projects.project
     for (let i = 0; i < 10; i++){
-      let newItem = 
+  
     }
   })
 
