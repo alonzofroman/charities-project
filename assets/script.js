@@ -2,7 +2,9 @@
 
  https://api.data.charitynavigator.org/v2
 
-API KEY: */
+1 month free trial
+
+API KEY: f5d879810f81ef14e848b61de031964f */
 
 /* Global Giving: https://www.globalgiving.org/api/methods/get-all-projects-for-a-theme/
 
@@ -33,7 +35,7 @@ $('#featuredCarousel').flickity({
 
 /*global search selector*/
 $(function() {
-  $( "#selector" ).selectmenu();
+  $('#selector').selectmenu();
 });
 
 function loadMain(){
@@ -43,20 +45,53 @@ function loadMain(){
 
 $('#initializeBtn').on('click', loadMain);
 
+//If there was an error, generate an error dialog
+function generateErrorDiaolog(){
+  let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
+  let errorDialogText = document.createTextNode('There was an error with your request. Try again.')
+  errorDialog.append(errorDialogText);
+  $(function() {
+    $(errorDialog).dialog();
+  });
+}
 
-
-/*local Charities button*/
+//Local charities display
 function pullLocalCharities(e){
   e.preventDefault();
   let citySearch = $('#cityInput').val();
-  let stateSearch = $('#stateInput').val();
-  //console.log(citySearch, stateSearch);
-  let localUrl = 'https://data.orghunter.com/v1/charitysearch?user_key=47ee0338250fd0f2fde645b300727ded&city=' + citySearch + '&state=' + stateSearch
-  //console.log(localUrl);
-  fetch (localUrl, {mode: 'cors'})
+  //Force user's state input to uppercase so it is recognized by API
+  let stateSearch = $('#stateInput').val().toUpperCase();
+  let localUrl;
+  //If they left the city blank, just search by state
+  if (citySearch == '') {
+    localUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&state=' + stateSearch
+  } else {
+    localUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&state=' + stateSearch + '&city=' + citySearch
+  }
+  fetch (localUrl)
     .then(function (response){
-      console.log(response);
+      if (response.status != 200) {
+        generateErrorDiaolog();
+      }
       return response.json();
+    })
+    .then(function(data){
+      //Remove all previous elements
+      resultsList.innerHTML = '';
+      console.log(data)
+      //Dynamically generate list items
+      for (let i = 0; i < data.length; i++) {
+        //save name of charity so it can be pulled later
+        let newListLink = $('<a>').attr('href', './single.html?charityname=' + data[i].charityName).appendTo(resultsList)
+        let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
+        let listTitle = $('<h4>').addClass('text-2xl').text(data[i].charityName)
+        newListItem.append(listTitle);
+        //if there is no city in the data, don't create location
+        if (data[i].mailingAddress.city != 'null'){
+          let listLocation = $('<p>').text(data[i].mailingAddress.city + ', ' + data[i].mailingAddress.stateOrProvince)
+          newListItem.append(listLocation);
+        }
+      }
     })
 
 }
@@ -65,7 +100,6 @@ $('#localSearchBtn').on('click', pullLocalCharities)
 
 
 //GLOBAL search
-
 function pullGlobalCharities(e) {
   e.preventDefault();
   let globalSelected = $('#selector option:selected').attr('data-id');
@@ -78,14 +112,11 @@ function pullGlobalCharities(e) {
   })
   .done(function(response){
     resultsList.innerHTML = '';
-    setTimeout(function(){
       let finalGlobalResults = response.projects.project
       for (let i = 0; i < 10; i++){
-        let newItem = $('<li>').addClass('listItem').text('test' + i).appendTo(resultsList)
+        let newListItem = $('<li>').addClass('listItem').text('test' + i).appendTo(resultsList)
       }
-    }, 200)
   })
-
   }
 
 $('#globalSearchBtn').on('click', pullGlobalCharities)

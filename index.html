@@ -32,8 +32,7 @@
     </div>
     <!--Main Div-->
     <div id="mainDiv" class="container mx-auto w-screen h-screen flex">
-        <div id="sidebar" class="fixed left-0 h-screen w-1/4 bg-blue-700 flex justify-start items-center flex-col p-1">
-
+        <div id="sidebar" class="fixed left-0 h-screen w-1/4 flex justify-start items-center flex-col p-1">
             <div id="searchWrapper" class="w-full flex flex-col justify-between items-center">
                 <h3>myCharitySearch</h3>
                 <label for="globalSearch">Search globally</label>
@@ -48,7 +47,7 @@
                 <button id="globalSearchBtn" class="searchBtns">Global Search</button>
                 <h3>Or search locally...</h3>
                 <input id="cityInput" class="inputs" placeholder="City...">
-                <input id="stateInput" class="inputs" placeholder="State...">
+                <input id="stateInput" class="inputs" maxlength="2" placeholder="State...">
                 <button id="localSearchBtn" class="searchBtns">Local Search</button>
             </div>
             <div id="historyWrapper" class="w-full flex flex-col items-center">
@@ -58,6 +57,9 @@
         <div id="searchResults" class="flex justify-end w-100 h-screen">
             <ul id="displayResults">
             </ul>
+        </div>
+        <div id="errorDialog" title="Error">
+            <p>There was an error with your request. Please try again.</p>
         </div>
     </div>
 

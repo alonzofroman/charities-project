@@ -1,18 +1,24 @@
-/*JS for single.html*/
+//if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity
+function checkIfLocalOrGlobal(){
+  let queryString = document.location.search;
+  let urlToArray = queryString.split('=');
+  if (urlToArray.includes('?charityname')) {
+    getLocalCharity(urlToArray);
+  } else {
+    //then run the globalfunction with the urlToArray parameter
+  }
+}
 
-/* API to search charity by state/city/zipcode:
-Docs: http://charityapi.orghunter.com/content/charity-search-summary-api
+var getLocalCharity = function (urlArray) {
+  let charityName = urlArray[1];
+  let charityUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&search=' + charityName;
+  fetch (charityUrl)
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+      console.log(data[0]);
+    })
+}
 
-API KEY: 47ee0338250fd0f2fde645b300727ded/ */
-
-
-/* Global Giving: https://www.globalgiving.org/api/methods/get-all-projects-for-a-theme/
-
-API KEY: 30898b94-9c49-4566-ae46-904bf7e12207 */
-
-
-/* Plug in lat and lon of charity into Google Maps API to show the charity's exact location:
-Great tutorial: https://www.youtube.com/watch?v=Zxf1mnP5zcw&ab_channel=TraversyMedia
-Docs :https://developers.google.com/maps/documentation/javascript/overview?hl=en_US
-
-API KEY: AIzaSyBGyCeq_y1j0ceJhDdpK7A8DDU-0wu-uSU */
+checkIfLocalOrGlobal();
