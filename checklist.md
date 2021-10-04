@@ -3,7 +3,7 @@
 ## Technologies
 - [Done] Uses something other than Bootstrap
 - [Done] Uses a new JS library we haven’t used in class
-- [ ] Use 2 different APIs
+- [Done] Use 2 different APIs
 
 ## Developing
 - [ ] Responds to user input
