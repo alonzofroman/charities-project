@@ -1,0 +1,36 @@
+/* https://colorhunt.co/palette/fbf4e9b1e6936ecb63ec9cd3 */
+body {
+  background: #B1E693;
+}
+
+#featuredCarousel {
+  width: 75vw;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 300px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+  margin: 10px;
+}
+
+#initializeBtn {
+  padding: 5px 10px 5px 10px;
+  border: 2px solid black;
+  margin-top: 50px;
+  border-radius: 20px;
+  transition: all 0.25s linear;
+}
+
+#initializeBtn:hover {
+  border-color: white;
+  color: white;
+  transform: scale(1.1);
+}
+
+#mainDiv {
+  display: none;
+}
