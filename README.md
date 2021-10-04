@@ -1,4 +1,4 @@
-# MyLocalCharities
+# myLocalCharities
 
 One paragraph of project description goes here.
 
