@@ -65,33 +65,22 @@ $('#localSearchBtn').on('click', pullLocalCharities)
 
 //GLOBAL search
 
-/*Global Charities button*/
-// function pullGlobalCharities(e){
-//   e.preventDefault();
-//   let selectedParam = $('#selector').val();
-//   //console.log(selectedParam);
-
-//https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207
-
-// function pullGlobalCharities() {  
-//   fetch ('')
-//   .then(function (response) {
-//     return response.json(); 
-//   })
-//   // .then(function(data) {
-//   //   console.log(data);
-//   // })
-// }
-
 function pullGlobalCharities() {
+  let globalSelected = $('#selector option:selected').attr('data-id');
+  //console.log(globalSelected);
+  let globalUrl = 'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207'
   $.ajax({
-    url: 'https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207',
+    url: globalUrl,
     method: 'GET',
-    datatype: 'JSON',
+    dataType: 'JSON',
   })
   .done(function(response){
-    console.log(response);
+    let finalGlobalResults = response.projects.project
+    for (let i = 0; i < 10; i++){
+      let newItem = 
+    }
   })
+
   }
 
 $('#globalSearchBtn').on('click', pullGlobalCharities)
