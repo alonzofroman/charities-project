@@ -38,12 +38,12 @@
                 <h3>myCharitySearch</h3>
                 <label for="globalSearch">Search globally</label>
                 <select name="globalSearch" id="selector">
-                <option>COVID 19</option>
-                <option>Education</option>
-                <option>Gender-Equality</option>
-                <option>Racial Justice</option>
-                <option>Climate Action</option>
-                <option>Food Security</option>
+                    <option data-id="covid-19">COVID 19</option>
+                    <option data-id="edu">Education</option>
+                    <option data-id="gender">Gender Equality</option>
+                    <option data-id="rights">Justice & Human Rights</option>
+                    <option data-id="climate">Climate Action</option>
+                    <option data-id="hunger">Food Security</option>
                 </select>
                 <button id="globalSearchBtn" class="searchBtns">Global Search</button>
                 <h3>Or search locally...</h3>
@@ -55,6 +55,13 @@
                 <h3>History:</h3>
             </div>
         </div>
+    </div>
+
+    <div id="searchResults">
+        <ul id="displayResults">
+
+        </ul>
+
     </div>
 
     <!--jQuery-->

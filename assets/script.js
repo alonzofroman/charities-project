@@ -42,15 +42,7 @@ function loadMain(){
 
 $('#initializeBtn').on('click', loadMain);
 
-/*Global Charities button*/
-function pullGlobalCharities(e){
-  e.preventDefault();
-  let selectedParam = $('#selector').val();
-  //console.log(selectedParam);
-  
-}
 
-$('#globalSearchBtn').on('click', pullGlobalCharities)
 
 /*local Charities button*/
 function pullLocalCharities(e){
@@ -69,3 +61,39 @@ function pullLocalCharities(e){
 }
 
 $('#localSearchBtn').on('click', pullLocalCharities)
+
+
+//GLOBAL search
+
+/*Global Charities button*/
+// function pullGlobalCharities(e){
+//   e.preventDefault();
+//   let selectedParam = $('#selector').val();
+//   //console.log(selectedParam);
+
+//https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207
+
+// function pullGlobalCharities() {  
+//   fetch ('')
+//   .then(function (response) {
+//     return response.json(); 
+//   })
+//   // .then(function(data) {
+//   //   console.log(data);
+//   // })
+// }
+
+function pullGlobalCharities() {
+  $.ajax({
+    url: 'https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207',
+    method: 'GET',
+    datatype: 'JSON',
+  })
+  .done(function(response){
+    console.log(response);
+  })
+  }
+
+$('#globalSearchBtn').on('click', pullGlobalCharities)
+
+
