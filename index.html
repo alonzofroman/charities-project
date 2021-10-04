@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--Matt's custom resetCSS-->
-    <link rel="stylesheet" href="/assets/mattReset.css">
+    <link rel="stylesheet" href="./assets/mattReset.css">
     <!--jQuery UI-->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!--TailwindCSS https://tailwindcss.com/docs-->
@@ -13,19 +13,39 @@
     <!--Flickity https://flickity.metafizzy.co/-->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!--Main CSS-->
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>myLocalCharities</title>
 </head>
 <body>
-    
+    <!--Splash Div-->
+    <div id="splashDiv" class="container mx-auto flex justify-center items-center h-screen w-screen flex-col">
+        <h1 class="text-4xl mb-5">Find local charities near you today!</h1>
+        <!--Utilizing flickity to display featured charities-->
+        <div id="featuredCarousel">
+            <div class="carousel-cell"><img src="https://www.fidoo.com/wp-content/uploads/2020/02/placeholder.png"></div>
+            <div class="carousel-cell"><img src="https://www.fidoo.com/wp-content/uploads/2020/02/placeholder.png"></div>
+            <div class="carousel-cell"><img src="https://www.fidoo.com/wp-content/uploads/2020/02/placeholder.png"></div>
+            <div class="carousel-cell"><img src="https://www.fidoo.com/wp-content/uploads/2020/02/placeholder.png"></div>
+        </div>
+          <button id="initializeBtn" class="text-2xl">Get Started</button>
+    </div>
+    <!--Main Div-->
+    <div id="mainDiv" class="container mx-auto h-screen">
+        <div id="sidebar" class="fixed left-0 h-screen w-1/5 bg-blue-700 flex justify-center items-center flex-col">
+            <h2>myLocalCharities</h2>
+            <input class="cityInput" placeholder="City...">
+            <input class="stateInput" placeholder="State...">
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--jQuery UI-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--Flickity-->
-    <script src="/path/to/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <!--Main JS-->
-    <script src="/assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>
