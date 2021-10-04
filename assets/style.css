@@ -3,6 +3,12 @@ body {
   background: #B1E693;
 }
 
+#mainDiv {
+  display:flex;
+  justify-content: end;
+  margin: none;
+}
+
 #featuredCarousel {
   width: 75vw;
 }
@@ -37,7 +43,6 @@ body {
 
 #searchWrapper {
   height: 60%;
-  background: green
 }
 
 .inputs {
@@ -49,7 +54,7 @@ body {
 
 .searchBtns {
   padding: 10px;
-  background: rgb(247, 127, 127);
+  background: red;
   border-radius: 10px;
   border: 1px solid black;
   transition: all 0.2s linear;
@@ -57,10 +62,18 @@ body {
 
 .searchBtns:hover {
   background: black;
-  color: rgb(247, 127, 127);
+  color: red;
 }
 
 #historyWrapper {
   height: 40%;
-  background-color: orange;
+}
+
+.listItem {
+  width: 60vw;
+  height: 50px;
+  background: red;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
 }
