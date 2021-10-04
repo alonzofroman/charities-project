@@ -21,6 +21,7 @@ API KEY: 6f7fcdfd5baf071bea56c4dc9633ff39 */
 
 const splashDiv = $('#splashDiv');
 const mainDiv = $('#mainDiv');
+const resultsList = document.querySelector('#displayResults');
 
 /*flickity for carousel*/
 $('#featuredCarousel').flickity({
@@ -65,7 +66,8 @@ $('#localSearchBtn').on('click', pullLocalCharities)
 
 //GLOBAL search
 
-function pullGlobalCharities() {
+function pullGlobalCharities(e) {
+  e.preventDefault();
   let globalSelected = $('#selector option:selected').attr('data-id');
   //console.log(globalSelected);
   let globalUrl = 'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207'
@@ -75,10 +77,13 @@ function pullGlobalCharities() {
     dataType: 'JSON',
   })
   .done(function(response){
-    let finalGlobalResults = response.projects.project
-    for (let i = 0; i < 10; i++){
-      let newItem = 
-    }
+    resultsList.innerHTML = '';
+    setTimeout(function(){
+      let finalGlobalResults = response.projects.project
+      for (let i = 0; i < 10; i++){
+        let newItem = $('<li>').addClass('listItem').text('test' + i).appendTo(resultsList)
+      }
+    }, 200)
   })
 
   }
