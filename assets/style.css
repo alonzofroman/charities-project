@@ -34,3 +34,33 @@ body {
 #mainDiv {
   display: none;
 }
+
+#searchWrapper {
+  height: 60%;
+  background: green
+}
+
+.inputs {
+  width: 90%;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.searchBtns {
+  padding: 10px;
+  background: rgb(247, 127, 127);
+  border-radius: 10px;
+  border: 1px solid black;
+  transition: all 0.2s linear;
+}
+
+.searchBtns:hover {
+  background: black;
+  color: rgb(247, 127, 127);
+}
+
+#historyWrapper {
+  height: 40%;
+  background-color: orange;
+}

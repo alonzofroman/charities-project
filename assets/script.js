@@ -15,6 +15,10 @@ Docs :https://developers.google.com/maps/documentation/javascript/overview?hl=en
 
 API KEY: AIzaSyBGyCeq_y1j0ceJhDdpK7A8DDU-0wu-uSU */
 
+/* get lon lat https://api.openweathermap.org/geo/1.0/direct?q=' + cityToSearch + '&limit=5&appid=
+
+API KEY: 6f7fcdfd5baf071bea56c4dc9633ff39 */
+
 const splashDiv = $('#splashDiv');
 const mainDiv = $('#mainDiv');
 
@@ -43,6 +47,7 @@ function pullGlobalCharities(e){
   e.preventDefault();
   let selectedParam = $('#selector').val();
   //console.log(selectedParam);
+  
 }
 
 $('#globalSearchBtn').on('click', pullGlobalCharities)

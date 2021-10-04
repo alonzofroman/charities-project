@@ -19,7 +19,8 @@
 <body>
     <!--Splash Div-->
     <div id="splashDiv" class="container mx-auto flex justify-center items-center h-screen w-screen flex-col">
-        <h1 class="text-4xl mb-5">Find local charities near you today!</h1>
+        <h1 class="text-3xl mb-5">myCharitySearch</h1>
+        <h2 class="text-4xl mb-5">Find local charities near you today!</h2>
         <!--Utilizing flickity to display featured charities-->
         <div id="featuredCarousel">
             <div class="carousel-cell"><img src="https://www.fidoo.com/wp-content/uploads/2020/02/placeholder.png"></div>
@@ -31,23 +32,28 @@
     </div>
     <!--Main Div-->
     <div id="mainDiv" class="container mx-auto h-screen">
-        <div id="sidebar" class="fixed left-0 h-screen w-1/5 bg-blue-700 flex justify-center items-center flex-col">
-            <h2>myCharitySearch</h2>
-            <label for="globalSearch">Search globally</label>
-            <select name="globalSearch" id="selector">
-              <option>COVID 19</option>
-              <option>Education</option>
-              <option>Gender-Equality</option>
-              <option>Racial Justice</option>
-              <option>Climate Action</option>
-              <option>Food Security</option>
-            </select>
-            <button id="globalSearchBtn">Search it</button>
-            <h3>Or search locally...</h3>
-            <input id="cityInput" placeholder="City...">
-            <input id="stateInput" placeholder="State...">
-            <button id="localSearchBtn">Search</button>
-            <h3>History:</h3>
+        <div id="sidebar" class="fixed left-0 h-screen w-1/4 bg-blue-700 flex justify-start items-center flex-col p-1">
+
+            <div id="searchWrapper" class="w-full flex flex-col justify-between items-center">
+                <h3>myCharitySearch</h3>
+                <label for="globalSearch">Search globally</label>
+                <select name="globalSearch" id="selector">
+                <option>COVID 19</option>
+                <option>Education</option>
+                <option>Gender-Equality</option>
+                <option>Racial Justice</option>
+                <option>Climate Action</option>
+                <option>Food Security</option>
+                </select>
+                <button id="globalSearchBtn" class="searchBtns">Global Search</button>
+                <h3>Or search locally...</h3>
+                <input id="cityInput" class="inputs" placeholder="City...">
+                <input id="stateInput" class="inputs" placeholder="State...">
+                <button id="localSearchBtn" class="searchBtns">Local Search</button>
+            </div>
+            <div id="historyWrapper" class="w-full flex flex-col items-center">
+                <h3>History:</h3>
+            </div>
         </div>
     </div>
 
