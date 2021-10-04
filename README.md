@@ -1,4 +1,4 @@
-# myLocalCharities
+# myCharitySearch
 
 One paragraph of project description goes here.
 

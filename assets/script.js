@@ -1,8 +1,8 @@
-/* API to search charity by state/city/zipcode:
-Docs: http://charityapi.orghunter.com/content/charity-search-summary-api
+/* API to search charity by state/city/zipcode: CHARITYNAVIGATOR
 
-API KEY: 47ee0338250fd0f2fde645b300727ded/ */
+ https://api.data.charitynavigator.org/v2
 
+API KEY: */
 
 /* Global Giving: https://www.globalgiving.org/api/methods/get-all-projects-for-a-theme/
 
@@ -37,3 +37,30 @@ function loadMain(){
 }
 
 $('#initializeBtn').on('click', loadMain);
+
+/*Global Charities button*/
+function pullGlobalCharities(e){
+  e.preventDefault();
+  let selectedParam = $('#selector').val();
+  //console.log(selectedParam);
+}
+
+$('#globalSearchBtn').on('click', pullGlobalCharities)
+
+/*local Charities button*/
+function pullLocalCharities(e){
+  e.preventDefault();
+  let citySearch = $('#cityInput').val();
+  let stateSearch = $('#stateInput').val();
+  //console.log(citySearch, stateSearch);
+  let localUrl = 'https://data.orghunter.com/v1/charitysearch?user_key=47ee0338250fd0f2fde645b300727ded&city=' + citySearch + '&state=' + stateSearch
+  //console.log(localUrl);
+  fetch (localUrl, {mode: 'cors'})
+    .then(function (response){
+      console.log(response);
+      return response.json();
+    })
+
+}
+
+$('#localSearchBtn').on('click', pullLocalCharities)
