@@ -35,8 +35,21 @@ var getGlobalCharity = function (urlArray) {
   })
   .done(function(data){
     //console.log(data.project);
+    console.log(data);
     $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
+    $('<br>').appendTo(mainDiv);
+    $('<img>').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
+    $('<br>').appendTo(mainDiv);
+    $('<div>').addClass('rounded-md bg-yellow-100').attr('id', 'textDiv').appendTo(mainDiv);
+    $('<p>').addClass('text-center rounded-md').text(data.project.activities).appendTo($("#textDiv"));
+    $('<br>').appendTo("#textDiv");
+    $('<p>').addClass('text-center rounded-md').text(data.project.need).appendTo("#textDiv");
+    $('<br>').appendTo(mainDiv);
     $('<p>').text(`Location: ${data.project.contactCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
+    $('<br>').appendTo(mainDiv);
     $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
+    $('<br>').appendTo(mainDiv);
+    $('<p>').text('Current funding: $' + data.project.funding).appendTo(mainDiv);
+    $('<p>').text('Goal: $' + data.project.goal).appendTo(mainDiv);
   })
 };
