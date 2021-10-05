@@ -24,11 +24,19 @@ let nextPageId;
 let globalSelected;
 
 /*flickity for carousel*/
-$('#featuredCarousel').flickity({
+var carousel = $('#featuredCarousel').flickity({
   autoPlay: true,
   wrapAround: true,
   cellAlign: 'left',
   contain: true
+});
+
+var caption = $('.caption');
+var flkty = carousel.data('flickity');
+console.log(flkty)
+
+carousel.on('select.flickity', function() {
+  caption.text(flkty.selectedElement.title)
 });
 
 /*global search selector*/
