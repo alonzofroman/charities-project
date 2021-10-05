@@ -126,6 +126,39 @@ function pullGlobalCharities(e) {
       let listLocation = $('<p>').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`)
       newListItem.append(listLocation);
     }
+    if (data.projects.hasNext === true) {
+      $('<button>').attr('id', 'nextPageBtn').text("Next Page").appendTo(resultsList);
+
+          $("#nextPageBtn").on('click', function(n) {
+            n.preventDefault();
+            $('.loading').show();
+            console.log("button clicked");
+            let nextPageCode = data.projects.nextProjectId
+            let GlobalUrlNext = 'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207&nextProjectId=' + nextPageCode;
+            console.log(GlobalUrlNext);
+            $.ajax({
+              url: GlobalUrlNext,
+              method: 'GET',
+              dataType: 'JSON',
+            })
+            .done(function(data){
+              $('.loading').hide();
+              resultsList.innerHTML = '';
+              let nextGlobalResults = data.projects.project;
+              for (let i = 0; i < 10; i++){
+                let newListLink = $('<a>').attr('href', './single.html?globalcharityid=' + nextGlobalResults[i].id).appendTo(resultsList)
+                let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
+                let listTitle = $('<h4>').addClass('text-2xl').text(nextGlobalResults[i].title)
+                newListItem.append(listTitle);
+                let listLocation = $('<p>').text(`${nextGlobalResults[i].contactCity}, ${nextGlobalResults[i].contactCountry}`)
+                newListItem.append(listLocation);
+              }
+              // if (data.projects.hasNext === true) {
+              //   $('<button>').attr('id', 'nextPageBtn').text("Next Page").appendTo(resultsList); //Not active a second time
+              // } 
+            })
+      })
+    }
   })
   }
 
