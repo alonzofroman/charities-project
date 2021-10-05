@@ -8,7 +8,7 @@ body {
   display: none;
 }
 
-#loading {
+.loading {
   display: none;
   position: fixed;
   left: 50%;
@@ -18,6 +18,17 @@ body {
   background: #212121;
   color: #F6F6F6;
   border-radius: 10px;
+}
+
+#loadingSingle {
+  left: 2%;
+  top: 2%;
+}
+
+.line {
+  width: 90%;
+  height: 1px;
+  background: #F6F6F6;
 }
 
 #mainDiv {
@@ -93,6 +104,7 @@ body {
 
 #historyWrapper {
   height: 40%;
+  padding: 5px;
 }
 
 .listItem {

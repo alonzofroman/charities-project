@@ -28,14 +28,14 @@
             <div class="carousel-cell"><a target="_blank" href="https://www.globalgiving.org/projects/empowering-poor-women-with-sustainable-livelihood/"><img src="https://files.globalgiving.org/pfil/18102/ph_18102_64139.jpg?m=1409047480000"></a></div>
             <div class="carousel-cell"><a target="_blank" href="https://www.globalgiving.org/projects/a-different-american-dream-campaign/"><img src="https://files.globalgiving.org/pfil/19926/ph_19926_91251.jpg?m=1475258957000"></a></div>
         </div>
-          <button type="submit" id="initializeBtn" class="text-2xl">Get Started</button>
+          <button type="submit" id="initializeBtn" class="text-3xl">Get Started</button>
     </div>
     <!--Main Div-->
     <div id="mainDiv" class="container mx-auto w-screen h-screen flex">
         <div id="sidebar" class="fixed left-0 h-screen w-1/4 flex justify-start items-center flex-col p-1">
             <div id="searchWrapper" class="w-full flex flex-col justify-between items-center">
-                <h3>myCharitySearch</h3>
-                <label for="globalSearch">Search globally</label>
+                <h3 class="text-3xl">myCharitySearch</h3>
+                <label class="text-2xl" for="globalSearch">Search globally</label>
                 <select name="globalSearch" id="selector">
                     <option data-id="covid-19">COVID 19</option>
                     <option data-id="edu">Education</option>
@@ -45,13 +45,15 @@
                     <option data-id="hunger">Food Security</option>
                 </select>
                 <button id="globalSearchBtn" class="searchBtns">Global Search</button>
-                <h3>Or search locally...</h3>
+                    <div class="line"></div>
+                <h3 class="text-2xl">Or search locally...</h3>
                 <input id="cityInput" class="inputs" placeholder="City...">
                 <input id="stateInput" class="inputs" maxlength="2" placeholder="State...">
                 <button id="localSearchBtn" class="searchBtns">Local Search</button>
+                    <div class="line"></div>
             </div>
             <div id="historyWrapper" class="w-full flex flex-col items-center">
-                <h3>History:</h3>
+                <h3 class="text-2xl">History:</h3>
             </div>
         </div>
         <div id="searchResults" class="flex justify-end w-100 h-screen">
@@ -61,7 +63,7 @@
         <div id="errorDialog" title="Error">
             <p>There was an error with your request. Please try again.</p>
         </div>
-        <div id="loading">
+        <div class="loading">
             <p>Loading Results...</p>
         </div>
     </div>
