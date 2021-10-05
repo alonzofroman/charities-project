@@ -8,6 +8,14 @@ body {
   display: none;
 }
 
+#loading {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  font-size: 3rem;
+}
+
 #mainDiv {
   display:flex;
   justify-content: end;

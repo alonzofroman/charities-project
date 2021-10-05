@@ -51,6 +51,7 @@ function generateErrorDiaolog(){
 //Local charities display
 function pullLocalCharities(e){
   e.preventDefault();
+  $('#loading').show()
   let citySearch = $('#cityInput').val();
   //Force user's state input to uppercase so it is recognized by API
   let stateSearch = $('#stateInput').val().toUpperCase();
@@ -69,6 +70,7 @@ function pullLocalCharities(e){
       return response.json();
     })
     .then(function(data){
+      $('#loading').hide()
       //Remove all previous elements
       resultsList.innerHTML = '';
       //console.log(data)
@@ -99,6 +101,7 @@ $('#localSearchBtn').on('click', function(e){
 //GLOBAL search
 function pullGlobalCharities(e) {
   e.preventDefault();
+  $('#loading').show()
   let globalSelected = $('#selector option:selected').attr('data-id');
   //console.log(globalSelected);
   let globalUrl = 'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207'
@@ -111,17 +114,18 @@ function pullGlobalCharities(e) {
     generateErrorDiaolog();
   })
   .done(function(data){
+    $('#loading').hide()
     resultsList.innerHTML = '';
-      let finalGlobalResults = data.projects.project;
-      //console.log(finalGlobalResults);
-      for (let i = 0; i < 10; i++){
-        let newListLink = $('<a>').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList)
-        let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
-        let listTitle = $('<h4>').addClass('text-2xl').text(finalGlobalResults[i].title)
-        newListItem.append(listTitle);
-        let listLocation = $('<p>').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`)
-        newListItem.append(listLocation);
-      }
+    let finalGlobalResults = data.projects.project;
+    //console.log(finalGlobalResults);
+    for (let i = 0; i < 10; i++){
+      let newListLink = $('<a>').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList)
+      let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
+      let listTitle = $('<h4>').addClass('text-2xl').text(finalGlobalResults[i].title)
+      newListItem.append(listTitle);
+      let listLocation = $('<p>').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`)
+      newListItem.append(listLocation);
+    }
   })
   }
 

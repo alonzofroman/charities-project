@@ -14,6 +14,9 @@ One paragraph of project description goes here.
 * [TailwindCSS](https://tailwindcss.com/)
 * [Flickity](https://flickity.metafizzy.co/)
 
+* [CharityNavigatorAPI](https://charity.3scale.net/docs)
+* [GlobalGivingAPI](https://www.globalgiving.org/api)
+
 ## Deployed Link
 
 * [See Live Site](siteLinkHere)
