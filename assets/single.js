@@ -1,6 +1,7 @@
 /* AAPKd82ceb4f7aed4c209143ce5c94b8b49b8UyBbWZfvk8SSWUoRqHCW12-n_B4K9RhkctxfT6oPP4Ajg4sb-LhIGvn6MvggU6c */
 function initMap(){
   const mainDiv = $('#singleContainer');
+  let theMap;
   //if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity. just name global charities hrefs smth different
   $(function checkIfLocalOrGlobal(){
     $('.loading').show()
@@ -26,10 +27,12 @@ function initMap(){
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
         $('.loading').hide()
-        $('<h1>').addClass('text-3xl').text(data[0].charityName).appendTo(mainDiv);
+        $('<h1>').addClass('text-4xl').text(data[0].charityName).appendTo(mainDiv);
         $('<p>').text(`Location: ${localCity}, ${localState}`).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
         //console.log(localState);
+        //generate map
+        theMap = $('<div>').attr('id', 'map').appendTo(mainDiv);
         getLonLat(localCity, localState);
       })
   }
@@ -47,19 +50,20 @@ function initMap(){
       //console.log(data.project);
       const globalCity = data.project.contactCity
       //console.log(data);
-      $('.loading').hide()
+      $('.loading').hide();
       //Please don't use <br> tag it can cause problems later on
-      $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
+      $('<h1>').addClass('text-4xl').text(data.project.title).appendTo(mainDiv);
       $('<p>').text(`Location: ${globalCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
+      $('<img>').addClass('singleImg').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
       $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
-      $('<img>').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
-      $('<div>').addClass('rounded-md bg-yellow-100').attr('id', 'textDiv').appendTo(mainDiv);
+      $('<div>').attr('id', 'fundingSection').appendTo(mainDiv);
+      $('<p>').text('Goal: $' + data.project.goal).appendTo($("#fundingSection"));
+      $('<p>').text('Current funding: $' + data.project.funding).appendTo($("#fundingSection"));
+      $('<div>').attr('id', 'textDiv').appendTo(mainDiv);
       $('<p>').addClass('text-center rounded-md').text(data.project.activities).appendTo($("#textDiv"));
       $('<p>').addClass('text-center rounded-md').text(data.project.need).appendTo("#textDiv");
-      $('<p>').text(`Location: ${data.project.contactCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
-      $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
-      $('<p>').text('Current funding: $' + data.project.funding).appendTo(mainDiv);
-      $('<p>').text('Goal: $' + data.project.goal).appendTo(mainDiv);
+      //generate map
+      theMap = $('<div>').attr('id', 'map').appendTo(mainDiv);
       getLonLat(globalCity);
     })
   };

@@ -1,15 +1,7 @@
 /* https://colorhunt.co/palette/2121216d9886d9cab3f6f6f6 */
 body {
-  background: linear-gradient(-50deg, #D9CAB3, #a38966, #f0d2a5);
-  background-size: 400% 400%;
-  animation: moving 30s ease-in-out;
+  background: #D9CAB3;
   color: #212121;
-}
-
-@keyframes moving {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
 }
 
 #errorDialog {
@@ -105,12 +97,25 @@ body {
 
 #mainDiv {
   display: none;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#searchResults {
+  width: 75vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #sidebar {
   background: #212121;
   color: white;
   box-shadow: 0px 0px 25px #212121;
+  width: 25vw;
 }
 
 #searchWrapper {
@@ -177,11 +182,50 @@ body {
 }
 
 .singleLinks {
-  padding: 5px;
+  padding: 15px;
+  border-radius: 10px;
   background: #6D9886;
   color: #F6F6F6;
   font-size: 1.5rem;
   transition: all 0.2s linear;
+  position: fixed;
+  right: 5%;
+  top: 5%;
+}
+
+#allWrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#singleContainer {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.singleImg {
+  width: 50%;
+  border-radius: 5px;
+}
+
+#textDiv {
+  padding: 10px;
+  border-radius: 5px;
+  background: #F6F6F6;
+  font-size: 1.2rem;
+}
+
+#fundingSection {
+  background: #6D9886;
+  color: #212121;
+  padding: 15px;
+  font-size: 1.5rem;
 }
 
 .listItem:hover, .historyBtn:hover, .singleLinks:hover {
@@ -190,6 +234,6 @@ body {
 }
 
 #map {
-  height: 300px;
-  width: 500px;
+  height: 45vh;
+  width: 60vw;
 }
