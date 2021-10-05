@@ -1,6 +1,11 @@
-/* https://colorhunt.co/palette/fbf4e9b1e6936ecb63ec9cd3 */
+/* https://colorhunt.co/palette/2121216d9886d9cab3f6f6f6 */
 body {
-  background: #B1E693;
+  background: #D9CAB3;
+  color: #212121;
+}
+
+#errorDialog {
+  display: none;
 }
 
 #mainDiv {
@@ -25,20 +30,25 @@ body {
 
 #initializeBtn {
   padding: 5px 10px 5px 10px;
-  border: 2px solid black;
+  border: 2px solid #212121;
   margin-top: 50px;
   border-radius: 20px;
   transition: all 0.25s linear;
 }
 
 #initializeBtn:hover {
-  border-color: white;
-  color: white;
+  border-color: #F6F6F6;;
+  color: #F6F6F6;;
   transform: scale(1.1);
 }
 
 #mainDiv {
   display: none;
+}
+
+#sidebar {
+  background: #212121;
+  color: white;
 }
 
 #searchWrapper {
@@ -47,22 +57,26 @@ body {
 
 .inputs {
   width: 90%;
+  height: 10%;
   margin: 5px;
-  border: 1px solid black;
+  border: 1px solid #212121;
   border-radius: 4px;
+  color: #212121;
+  background: #F6F6F6;
 }
 
 .searchBtns {
   padding: 10px;
-  background: red;
+  background: #6D9886;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #212121;
   transition: all 0.2s linear;
 }
 
 .searchBtns:hover {
-  background: black;
-  color: red;
+  background: #212121;
+  color: #6D9886;
+  border-color: #6D9886;
 }
 
 #historyWrapper {
@@ -71,9 +85,29 @@ body {
 
 .listItem {
   width: 60vw;
-  height: 50px;
-  background: red;
+  height: 75px;
+  background: #6D9886;
   border-radius: 10px;
   text-align: center;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s linear;
+}
+
+.listItem:hover {
+  background: #31966c;
+}
+
+.singleLinks {
+  padding: 5px;
+  background: #6D9886;
+  color: #F6F6F6;
+  font-size: 1.5rem;
+}
+
+.singleLinks:hover {
+  background: #31966c;
 }

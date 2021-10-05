@@ -1,18 +1,42 @@
-/*JS for single.html*/
+const mainDiv = $('#singleContainer');
 
-/* API to search charity by state/city/zipcode:
-Docs: http://charityapi.orghunter.com/content/charity-search-summary-api
+//if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity. just name global charities hrefs smth different
+$(function checkIfLocalOrGlobal(){
+  let queryString = document.location.search;
+  let urlToArray = queryString.split('=');
+  if (urlToArray.includes('?charityname')) {
+    getLocalCharity(urlToArray);
+  } else {
+    getGlobalCharity(urlToArray)
+  }
+})
 
-API KEY: 47ee0338250fd0f2fde645b300727ded/ */
+var getLocalCharity = function (urlArray) {
+  let nameOfCharity = urlArray[1];
+  let charityUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&search=' + nameOfCharity;
+  fetch (charityUrl)
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+      $('<h1>').addClass('text-3xl').text(data[0].charityName).appendTo(mainDiv);
+      $('<p>').text(`Location: ${data[0].mailingAddress.city}, ${data[0].mailingAddress.stateOrProvince}`).appendTo(mainDiv);
+      $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
+    })
+}
 
-
-/* Global Giving: https://www.globalgiving.org/api/methods/get-all-projects-for-a-theme/
-
-API KEY: 30898b94-9c49-4566-ae46-904bf7e12207 */
-
-
-/* Plug in lat and lon of charity into Google Maps API to show the charity's exact location:
-Great tutorial: https://www.youtube.com/watch?v=Zxf1mnP5zcw&ab_channel=TraversyMedia
-Docs :https://developers.google.com/maps/documentation/javascript/overview?hl=en_US
-
-API KEY: AIzaSyBGyCeq_y1j0ceJhDdpK7A8DDU-0wu-uSU */
+var getGlobalCharity = function (urlArray) {
+  let idOfCharity = urlArray[1];
+  let charityUrl = 'https://api.globalgiving.org/api/public/projectservice/projects/' + idOfCharity + '?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
+  $.ajax({
+    url: charityUrl,
+    method: 'GET',
+    dataType: 'JSON', //when we comment this out, the XML is returned in console log, if we keep it in, nothing ever shows up??
+  })
+  .done(function(data){
+    //console.log(data.project);
+    $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
+    $('<p>').text(`Location: ${data.project.contactCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
+    $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
+  })
+};

@@ -6,13 +6,13 @@
 - [Done] Use 2 different APIs
 
 ## Developing
-- [ ] Responds to user input
-- [ ] User input validation (if they type the wrong thing, there’s an error)
-- [ ] Have some sort of repeating element (the list items that will be dynamically generated)
+- [Done] Responds to user input
+- [Done] User input validation (if they type the wrong thing, there’s an error)
+- [Done] Have some sort of repeating element (the list items that will be dynamically generated)
 - [ ] MUST use localStorage ("My Favorite Charities" or maybe just "Recently Searched" list)
 
 ## Not super required
-- [ ] Uses modals (doesn't have to, just don't use alerts/promps)
+- [Done] Uses modals (doesn't have to, just don't use alerts/promps)
 
 ## Finishing up
 - [ ] Google Font
