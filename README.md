@@ -14,6 +14,11 @@ One paragraph of project description goes here.
 * [TailwindCSS](https://tailwindcss.com/)
 * [Flickity](https://flickity.metafizzy.co/)
 
+* [CharityNavigatorAPI](https://charity.3scale.net/docs)
+* [GlobalGivingAPI](https://www.globalgiving.org/api)
+* [OpenWeatherGeoAPI](https://openweathermap.org/api/geocoding-api)
+* [GoogleMapsAPI](https://developers.google.com/maps)
+
 ## Deployed Link
 
 * [See Live Site](siteLinkHere)
@@ -37,8 +42,8 @@ One paragraph of project description goes here.
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Whatever aknowledgements
+* [Google Maps Tutorial from TraversyMedia](https://www.youtube.com/watch?v=Zxf1mnP5zcw&ab_channel=TraversyMedia)

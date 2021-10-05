@@ -8,6 +8,29 @@ body {
   display: none;
 }
 
+.loading {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  font-size: 4rem;
+  padding: 10px;
+  background: #212121;
+  color: #F6F6F6;
+  border-radius: 10px;
+}
+
+#loadingSingle {
+  left: 2%;
+  top: 2%;
+}
+
+.line {
+  width: 90%;
+  height: 1px;
+  background: #F6F6F6;
+}
+
 #mainDiv {
   display:flex;
   justify-content: end;
@@ -81,6 +104,7 @@ body {
 
 #historyWrapper {
   height: 40%;
+  padding: 5px;
 }
 
 .listItem {
@@ -110,4 +134,9 @@ body {
 
 .singleLinks:hover {
   background: #31966c;
+}
+
+#map {
+  height: 300px;
+  width: 300px;
 }
