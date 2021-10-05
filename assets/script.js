@@ -17,6 +17,8 @@ API KEY: AIzaSyBGyCeq_y1j0ceJhDdpK7A8DDU-0wu-uSU */
 const splashDiv = $('#splashDiv');
 const mainDiv = $('#mainDiv');
 const resultsList = document.querySelector('#displayResults');
+const historyBox = $('#historyWrapper')
+let history = [];
 
 /*flickity for carousel*/
 $('#featuredCarousel').flickity({
@@ -77,13 +79,13 @@ function pullLocalCharities(e){
       //Dynamically generate list items
       for (let i = 0; i < data.length; i++) {
         //save name of charity so it can be pulled later
-        let newListLink = $('<a>').attr('href', './single.html?charityname=' + data[i].charityName).appendTo(resultsList)
-        let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
-        let listTitle = $('<h4>').addClass('text-2xl').text(data[i].charityName)
+        let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?charityname=' + data[i].charityName).appendTo(resultsList)
+        let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink)
+        let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(data[i].charityName)
         newListItem.append(listTitle);
         //if there is no city in the data, don't create location
         if (data[i].mailingAddress.city != null){
-          let listLocation = $('<p>').text(`${data[i].mailingAddress.city}, ${data[i].mailingAddress.stateOrProvince}`)
+          let listLocation = $('<p>').addClass('listIgnore').text(`${data[i].mailingAddress.city}, ${data[i].mailingAddress.stateOrProvince}`)
           newListItem.append(listLocation);
         };
       };
@@ -119,11 +121,11 @@ function pullGlobalCharities(e) {
     let finalGlobalResults = data.projects.project;
     //console.log(finalGlobalResults);
     for (let i = 0; i < 10; i++){
-      let newListLink = $('<a>').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList)
-      let newListItem = $('<li>').addClass('listItem').appendTo(newListLink)
-      let listTitle = $('<h4>').addClass('text-2xl').text(finalGlobalResults[i].title)
+      let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList)
+      let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink)
+      let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(finalGlobalResults[i].title)
       newListItem.append(listTitle);
-      let listLocation = $('<p>').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`)
+      let listLocation = $('<p>').addClass('listIgnore').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`)
       newListItem.append(listLocation);
     }
     if (data.projects.hasNext === true) {
@@ -164,10 +166,38 @@ function pullGlobalCharities(e) {
 
 $('#globalSearchBtn').on('click', pullGlobalCharities)
 
-// whenever user clicks on an item, that item is saved to history and pushed into localstorage
+//HISTORY
+function renderHistory(){
+  if (history.length > 0){
+    for (let i = 0; i < history.length; i++) {
+      let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
+      newHistoryBtn.attr('href', history[i].url);
+      //console.log(newHistoryBtn.attr('href'));
+    }
+  }
+}
 
-// in order to save to history, just grab the href we assigned to the list item earlier and attach
-// an li to history ul with an a href linking to that page
-// then save those to an object which can be loaded once loadMain() function is called
+function addToHistory(e){
+  historyBox.html('');
+  //clear all and rerender on click
+  let elemUrl = e.target.getAttribute('href');
+  let elemTitle = $(e.target).children().children('h4').text()
+  let newHistoryObject = {url: elemUrl, title: elemTitle}
+  console.log(history);
+  history.unshift(newHistoryObject);
+  if (history.length > 6) {
+    history.pop();
+  }
+  localStorage.setItem('clickHistory', JSON.stringify(history));
+  renderHistory();
+}
 
-// for back button, save last link called by user, then run load it up from localstorage (maybe could work)
+$('#displayResults').on('click', 'a', addToHistory);
+
+$(function loadHistory(){
+  if (localStorage.getItem('clickHistory') !== null) {
+    let pulledHistory = JSON.parse(localStorage.getItem('clickHistory'));
+    history = pulledHistory;
+    renderHistory();
+  }
+});

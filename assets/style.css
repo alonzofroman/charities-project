@@ -1,7 +1,15 @@
 /* https://colorhunt.co/palette/2121216d9886d9cab3f6f6f6 */
 body {
-  background: #D9CAB3;
+  background: linear-gradient(-50deg, #D9CAB3, #a38966, #f0d2a5);
+  background-size: 400% 400%;
+  animation: moving 30s ease-in-out;
   color: #212121;
+}
+
+@keyframes moving {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 #errorDialog {
@@ -43,12 +51,41 @@ body {
 
 .carousel-cell {
   width: 100%;
-  height: 300px;
+  height: 400px;
   margin-right: 10px;
-  background: #8C8;
-  border-radius: 5px;
   counter-increment: gallery-cell;
-  margin: 10px;
+}
+
+.carousel-cell a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flickity-page-dots {
+  bottom: -22px;
+}
+
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
+}
+
+.flickity-prev-next-button {
+  width: 50px;
+  height: 50px;
+}
+
+.flickity-button-icon {
+  fill: #212121;
 }
 
 #initializeBtn {
@@ -57,11 +94,12 @@ body {
   margin-top: 50px;
   border-radius: 20px;
   transition: all 0.25s linear;
+  box-shadow: 0px 0px 10px #212121;
 }
 
 #initializeBtn:hover {
-  border-color: #F6F6F6;;
-  color: #F6F6F6;;
+  border-color: #6D9886;
+  color: #6D9886;
   transform: scale(1.1);
 }
 
@@ -72,6 +110,7 @@ body {
 #sidebar {
   background: #212121;
   color: white;
+  box-shadow: 0px 0px 25px #212121;
 }
 
 #searchWrapper {
@@ -102,11 +141,7 @@ body {
   border-color: #6D9886;
 }
 
-#historyWrapper {
-  height: 40%;
-  padding: 5px;
-}
-
+/*Main list item styling*/
 .listItem {
   width: 60vw;
   height: 75px;
@@ -121,8 +156,24 @@ body {
   transition: all 0.2s linear;
 }
 
-.listItem:hover {
-  background: #31966c;
+/*Disable pointer/click/mouseover events for elements inside a tag in list*/
+.listIgnore {
+  pointer-events: none;
+}
+
+#historyWrapper {
+  height: 40%;
+  padding: 5px;
+}
+
+.historyBtn {
+  padding: 5px;
+  margin-top: 2px;
+  background: #6D9886;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  transition: all 0.2s linear;
 }
 
 .singleLinks {
@@ -130,13 +181,15 @@ body {
   background: #6D9886;
   color: #F6F6F6;
   font-size: 1.5rem;
+  transition: all 0.2s linear;
 }
 
-.singleLinks:hover {
-  background: #31966c;
+.listItem:hover, .historyBtn:hover, .singleLinks:hover {
+  background: #57bd91;
+  transform: scale(1.05);
 }
 
 #map {
   height: 300px;
-  width: 300px;
+  width: 500px;
 }

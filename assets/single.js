@@ -1,3 +1,5 @@
+/* AAPKd82ceb4f7aed4c209143ce5c94b8b49b8UyBbWZfvk8SSWUoRqHCW12-n_B4K9RhkctxfT6oPP4Ajg4sb-LhIGvn6MvggU6c */
+
 const mainDiv = $('#singleContainer');
 
 //if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity. just name global charities hrefs smth different
@@ -47,29 +49,23 @@ var getGlobalCharity = function (urlArray) {
     const globalCity = data.project.contactCity
     //console.log(data);
     $('.loading').hide()
+    //Please don't use <br> tag it can cause problems later on
     $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
     $('<p>').text(`Location: ${globalCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
     $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
-    $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
-    $('<br>').appendTo(mainDiv);
     $('<img>').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
-    $('<br>').appendTo(mainDiv);
     $('<div>').addClass('rounded-md bg-yellow-100').attr('id', 'textDiv').appendTo(mainDiv);
     $('<p>').addClass('text-center rounded-md').text(data.project.activities).appendTo($("#textDiv"));
-    $('<br>').appendTo("#textDiv");
     $('<p>').addClass('text-center rounded-md').text(data.project.need).appendTo("#textDiv");
-    $('<br>').appendTo(mainDiv);
     $('<p>').text(`Location: ${data.project.contactCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
-    $('<br>').appendTo(mainDiv);
     $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
-    $('<br>').appendTo(mainDiv);
     $('<p>').text('Current funding: $' + data.project.funding).appendTo(mainDiv);
     $('<p>').text('Goal: $' + data.project.goal).appendTo(mainDiv);
     getLonLat(globalCity);
   })
 };
 
-//get lon and lat of location
+//get lon and lat of location either from global charity or local charity
 function getLonLat(city, state){
   let getLonLatUrl;
   if (state == undefined || state == null) {
@@ -91,8 +87,9 @@ function getLonLat(city, state){
   })
 }
 
+//will get google maps working don't worry
 function initMap(lat, lon){
-  console.log(lat + ' and ' + lon)
+  //console.log(lat + ' and ' + lon)
   var options = {
     zoom: 8,
     center: {lat: lat, lng: lon}
@@ -100,3 +97,5 @@ function initMap(lat, lon){
 
   var map = new google.maps.Map(document.getElementById('map'), options);
 }
+
+// for back button, save last link called by user, then run load it up from localstorage (maybe could work)
