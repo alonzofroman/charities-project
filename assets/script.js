@@ -133,18 +133,24 @@ function pullGlobalCharities(e) {
 
 $('#globalSearchBtn').on('click', pullGlobalCharities)
 
+//HISTORY
 function renderHistory(){
-  for (let i = 0; i < history.length; i++) {
-    $('<button>').addClass('historyBtn').text(history[i].title).attr('href', history[i].url).appendTo(historyBox);
+  if (history.length > 0){
+    for (let i = 0; i < history.length; i++) {
+      let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
+      newHistoryBtn.attr('href', history[i].url);
+      //console.log(newHistoryBtn.attr('href'));
+    }
   }
 }
 
 function addToHistory(e){
-  //remove last item in history list (the least recent one)
-  historyBox.children('button', 5).remove();
+  historyBox.html('');
+  //clear all and rerender on click
   let elemUrl = e.target.getAttribute('href');
-  let elemTitle = $(e.target).children().children(0).text()
+  let elemTitle = $(e.target).children().children('h4').text()
   let newHistoryObject = {url: elemUrl, title: elemTitle}
+  console.log(history);
   history.unshift(newHistoryObject);
   if (history.length > 6) {
     history.pop();
@@ -155,9 +161,10 @@ function addToHistory(e){
 
 $('#displayResults').on('click', 'a', addToHistory);
 
-//this runs on page load
 $(function loadHistory(){
-  let pulledHistory = JSON.parse(localStorage.getItem('clickHistory'));
-  history = pulledHistory;
-  renderHistory();
-})
+  if (localStorage.getItem('clickHistory') !== null) {
+    let pulledHistory = JSON.parse(localStorage.getItem('clickHistory'));
+    history = pulledHistory;
+    renderHistory();
+  }
+});
