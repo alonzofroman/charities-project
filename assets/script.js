@@ -206,3 +206,11 @@ $('#displayResults').on('click', 'button' ,function(nextId) {
               renderGlobalList(data);
              })
 })
+
+
+function backToHome() {
+  mainDiv.hide();
+  splashDiv.show();
+}
+
+$("#backBtn").on('click', backToHome);
