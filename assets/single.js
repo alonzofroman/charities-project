@@ -1,8 +1,6 @@
 /* AAPKd82ceb4f7aed4c209143ce5c94b8b49b8UyBbWZfvk8SSWUoRqHCW12-n_B4K9RhkctxfT6oPP4Ajg4sb-LhIGvn6MvggU6c */
-
 function initMap(){
   const mainDiv = $('#singleContainer');
-
   //if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity. just name global charities hrefs smth different
   $(function checkIfLocalOrGlobal(){
     $('.loading').show()
@@ -91,6 +89,6 @@ function initMap(){
       });
     })
   }
-}
+};
 
-// for back button, save last link called by user, then run load it up from localstorage (maybe could work)
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
