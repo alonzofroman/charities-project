@@ -71,5 +71,16 @@ function getLonLat(city, state){
   .done(function(data){
     locationLon = data[0].lon;
     locationLat = data[0].lat;
+    initMap(locationLon, locationLat);
   })
+}
+
+function initMap(lat, lon){
+  console.log(lat + ' and ' + lon)
+  var options = {
+    zoom: 8,
+    center: {lat: lat, lng: lon}
+  }
+
+  var map = new google.maps.Map(document.getElementById('map'), options);
 }
