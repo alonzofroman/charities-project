@@ -88,13 +88,12 @@ function pullLocalCharities(e){
         newListItem.append(listTitle);
         //if there is no city in the data, don't create location
         if (data[i].mailingAddress.city != 'null'){
-          let listLocation = $('<p>').text(data[i].mailingAddress.city + ', ' + data[i].mailingAddress.stateOrProvince)
+          let listLocation = $('<p>').text(`${data[i].mailingAddress.city}, ${data[i].mailingAddress.stateOrProvince}`)
           newListItem.append(listLocation);
-        }
-      }
-    })
-
-}
+        };
+      };
+    });
+};
 
 $('#localSearchBtn').on('click', pullLocalCharities)
 
@@ -110,9 +109,10 @@ function pullGlobalCharities(e) {
     method: 'GET',
     dataType: 'JSON',
   })
-  .done(function(response){
+  .done(function(data){
     resultsList.innerHTML = '';
-      let finalGlobalResults = response.projects.project
+      let finalGlobalResults = data.projects.project
+      console.log(finalGlobalResults);
       for (let i = 0; i < 10; i++){
         let newListItem = $('<li>').addClass('listItem').text('test' + i).appendTo(resultsList)
       }
