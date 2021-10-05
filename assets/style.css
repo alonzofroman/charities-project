@@ -13,7 +13,11 @@ body {
   position: fixed;
   left: 50%;
   top: 50%;
-  font-size: 3rem;
+  font-size: 4rem;
+  padding: 10px;
+  background: #212121;
+  color: #F6F6F6;
+  border-radius: 10px;
 }
 
 #mainDiv {
