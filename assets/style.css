@@ -94,4 +94,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s linear;
+}
+
+.listItem:hover {
+  background: #31966c;
+}
+
+.singleLinks {
+  padding: 5px;
+  background: #6D9886;
+  color: #F6F6F6;
+  font-size: 1.5rem;
+}
+
+.singleLinks:hover {
+  background: #31966c;
 }

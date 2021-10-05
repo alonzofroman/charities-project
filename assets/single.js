@@ -7,7 +7,7 @@ $(function checkIfLocalOrGlobal(){
   if (urlToArray.includes('?charityname')) {
     getLocalCharity(urlToArray);
   } else {
-    //then run the globalfunction with the urlToArray parameter
+    getGlobalCharity(urlToArray)
   }
 })
 
@@ -19,8 +19,24 @@ var getLocalCharity = function (urlArray) {
       return response.json();
     })
     .then(function(data){
-      $('<h1>').text(data[0].charityName).appendTo(mainDiv);
+      $('<h1>').addClass('text-3xl').text(data[0].charityName).appendTo(mainDiv);
       $('<p>').text(`Location: ${data[0].mailingAddress.city}, ${data[0].mailingAddress.stateOrProvince}`).appendTo(mainDiv);
-      $('<a>').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
+      $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
     })
 }
+
+var getGlobalCharity = function (urlArray) {
+  let idOfCharity = urlArray[1];
+  let charityUrl = 'https://api.globalgiving.org/api/public/projectservice/projects/' + idOfCharity + '?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
+  $.ajax({
+    url: charityUrl,
+    method: 'GET',
+    dataType: 'JSON', //when we comment this out, the XML is returned in console log, if we keep it in, nothing ever shows up??
+  })
+  .done(function(data){
+    //console.log(data.project);
+    $('<h1>').addClass('text-3xl').text(data.project.title).appendTo(mainDiv);
+    $('<p>').text(`Location: ${data.project.contactCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
+    $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
+  })
+};
