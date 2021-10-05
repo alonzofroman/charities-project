@@ -1,9 +1,6 @@
 /* AAPKd82ceb4f7aed4c209143ce5c94b8b49b8UyBbWZfvk8SSWUoRqHCW12-n_B4K9RhkctxfT6oPP4Ajg4sb-LhIGvn6MvggU6c */
 function initMap(){
-
-
   const mainDiv = $('#singleContainer');
-
   //if URL has '?charityname' string, do getLocalCharity, else, do getGlobalCharity. just name global charities hrefs smth different
   $(function checkIfLocalOrGlobal(){
     $('.loading').show()
@@ -71,11 +68,11 @@ function initMap(){
   function getLonLat(city, state){
     let getLonLatUrl;
     if (state == undefined || state == null) {
-      getLonLatUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
+      getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     } else if (city == undefined) {
-      getLonLatUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
+      getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     } else {
-      getLonLatUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
+      getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     }
     $.ajax({
       url: getLonLatUrl,
@@ -83,25 +80,15 @@ function initMap(){
       dataType: 'JSON',
     })
     .done(function(data){
-      locationLon = parseFloat(data[0].lon);
-      locationLat = parseFloat(data[0].lat);
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: locationLat, lng: locationLon},
-        zoom: 8
+      locationLon = data[0].lon;
+      locationLat = data[0].lat;
+      // initMap(locationLon, locationLat);
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: locationLat, lng: locationLon },
+        zoom: 8,
       });
-      
-      // setTimeout(function (){
-      //   initMap(locationLon, locationLat)},2000);
-      // console.log(locationLon, locationLat)
     })
   }
-}
-
-
-// for back button, save last link called by user, then run load it up from localstorage (maybe could work)
-
-// Google maps aki key
-
-// apiKey = "AIzaSyBaGlFySOWAjJUM4euWimp_yGUNFmgK5fE"
+};
 
 // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
