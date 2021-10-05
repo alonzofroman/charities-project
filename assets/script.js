@@ -214,3 +214,38 @@ function backToHome() {
 }
 
 $("#backBtn").on('click', backToHome);
+
+//Function to get user location
+
+$("#getLocationBtn").click(function() {
+  console.log("button is clicked");
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(generatePosition, showError);
+  }
+  else {
+    let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
+    let errorText = document.createTextNode('This browser does not support geolocation');
+    errorDialog.append(errorText);
+     $(function() {
+     $(errorDialog).dialog();
+  });
+  }
+
+})
+
+function generatePosition(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+}
+
+function showError(error) {
+  if (error.PERMISSION_DENIED) {
+    let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
+    let errorText = document.createTextNode('The user has denied request for Geolocation');
+    errorDialog.append(errorText);
+     $(function() {
+     $(errorDialog).dialog();
+})
+  }
+  
+}
