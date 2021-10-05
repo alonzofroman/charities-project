@@ -215,6 +215,8 @@ function backToHome() {
 
 $("#backBtn").on('click', backToHome);
 
+
+//http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
 //Function to get user location
 
 $("#getLocationBtn").click(function() {
@@ -236,6 +238,21 @@ $("#getLocationBtn").click(function() {
 function generatePosition(position) {
   console.log(position.coords.latitude);
   console.log(position.coords.longitude);
+  let userLat = position.coords.latitude;
+  let userLon = position.coords.longitude;
+
+  $.ajax({
+    url: 'http://api.openweathermap.org/geo/1.0/reverse?lat=' + userLat + '&lon=' + userLon + '&appid=f4fa96020f2282301cd8312fc675da98',
+    method: 'GET',
+    dataType: 'JSON'
+  })
+  .done(function(userData) {
+    console.log(userData);
+    console.log(userData[0].name);
+    console.log(userData[0].country);
+    $("#cityInput").val(userData[0].name);
+    $("#stateInput").val(userData[0].state);
+  })
 }
 
 function showError(error) {
