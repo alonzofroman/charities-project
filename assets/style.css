@@ -130,6 +130,7 @@ body {
   color: white;
   box-shadow: 0px 0px 25px #212121;
   width: 25vw;
+  z-index: 999;
 }
 
 #searchWrapper {
@@ -152,7 +153,7 @@ body {
 
 .inputs {
   width: 90%;
-  height: 15%;
+  height: 30%;
   margin: 5px;
   border: 1px solid #212121;
   border-radius: 4px;
@@ -323,9 +324,9 @@ body {
     width: 100vw;
   } */
   .spaceFiller {
-    display: block;
+    display: flex;
     width: 100vw;
-    height: 20vh;
+    height: 25vh;
   }
   #mainDiv {
     justify-content: center;

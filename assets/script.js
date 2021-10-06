@@ -41,7 +41,9 @@ carousel.on('select.flickity', function () {
 
 /*global search selector*/
 $(function () {
-  $('#selector').selectmenu();
+  $('#selector').selectmenu({
+    width: 'auto',
+  });
 });
 
 function loadMain() {
@@ -296,8 +298,7 @@ function generatePosition(position) {
     console.log(userData);
     // console.log(userData[0].name);
     // console.log(userData[0].country);
-    $('#cityInput').val(userData[0].name);
-    $('#stateInput').val(userData[0].state);
+    $('#cityInput').val(`${userData[0].name}, ${userData[0].state}, USA`);
   });
 }
 
@@ -323,8 +324,7 @@ $(function(){
     let state = splitForState[2].toUpperCase();
     //console.log(city, state);
     loadMain();
-    $('#cityInput').val(city);
-    $('#stateInput').val(state);
+    $('#cityInput').val(`${city}, ${state}, USA`);
     $('#localSearchBtn').click();
   } else if (queryLink.includes('type')) {
     let firstSplit = queryLink.split('=')
