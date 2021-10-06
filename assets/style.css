@@ -102,11 +102,12 @@ body {
   height: 100vh;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 #searchResults {
   width: 75vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,6 +188,18 @@ body {
   width: 90%;
   text-align: center;
   transition: all 0.2s linear;
+}
+
+#backBtn {
+  background:#F6F6F6;
+  border-radius: 4px;
+  color: #212121;
+  transition: all 0.2s linear;
+}
+
+#backBtn:hover {
+  color: #F6F6F6;
+  background: #212121;
 }
 
 .singleLinks {
