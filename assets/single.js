@@ -23,11 +23,12 @@ function initMap(){
         return response.json();
       })
       .then(function(data){
-        //console.log(data[0]);
+        console.log(data[0]);
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
         $('.loading').hide()
         $('<h1>').addClass('text-4xl').text(data[0].charityName).appendTo(mainDiv);
+        $('<p>').addClass('text-center rounded-md bg-yellow-100').text(data[0].mission).appendTo(mainDiv);
         $('<p>').text(`Location: ${localCity}, ${localState}`).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
         //console.log(localState);
