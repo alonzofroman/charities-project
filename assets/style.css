@@ -4,6 +4,10 @@ body {
   color: #212121;
 }
 
+.spaceFiller {
+  display: none;
+}
+
 #errorDialog {
   display: none;
 }
@@ -322,6 +326,7 @@ body {
     width: 100vw;
   }
   .spaceFiller {
+    display: block;
     width: 100vw;
     height: 20vh;
   }
