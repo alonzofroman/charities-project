@@ -40,11 +40,11 @@ carousel.on('select.flickity', function () {
 });
 
 /*global search selector*/
-$(function () {
-  $('#selector').selectmenu({
-    width: 'auto',
-  });
-});
+// $(function() {
+//   $('#selector').selectmenu({
+//     width: 'auto'
+//   });
+// });
 
 function loadMain() {
   splashDiv.hide();
