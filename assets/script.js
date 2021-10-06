@@ -342,3 +342,31 @@ $(function(){
     console.log('wudup');
   }
 })
+
+// places apikey: AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8
+
+
+
+var input = document.getElementById('cityInput');
+var autocomplete = new google.maps.places.Autocomplete(input,options)
+
+
+var config = {
+  method: 'get',
+  url: 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&language=en&key=AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8',
+  headers: { }
+};
+
+var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: "us"}
+ };
+
+input (config,options)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
