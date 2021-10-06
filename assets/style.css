@@ -110,10 +110,14 @@ body {
 
 #searchResults {
   width: 75vw;
-  height: 90vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#displayResults {
+  height: 95vh;
 }
 
 #sidebar {
@@ -292,7 +296,7 @@ body {
   width: 60vw;
 }
 
-
+/*styles for selectmenu from https://codepen.io/floral/pen/pbdKo*/
 .select-wrap{
   position:relative;
   overflow:hidden;
@@ -372,9 +376,9 @@ body {
     width: 50%;
     height: 100%;
   }
-  /* #searchResults {
+  #searchResults {
     width: 100vw;
-  } */
+  }
   .spaceFiller {
     display: flex;
     width: 100vw;

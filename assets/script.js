@@ -71,8 +71,8 @@ function pullLocalCharities(e) {
   e.preventDefault();
   $('.loading').show();
   let citySearch = $('#cityInput').val();
-  console.log(citySearch)
-  console.log(citySearch.split(", "))
+  // console.log(citySearch)
+  // console.log(citySearch.split(", "))
   //Force user's state input to uppercase so it is recognized by API
 
   let paramsObject = [citySearch]
@@ -96,7 +96,7 @@ function pullLocalCharities(e) {
     })
     .then(function (data) {
       $('.loading').hide();
-      console.log(data);
+      // console.log(data);
       //Remove all previous elements
       resultsList.innerHTML = '';
       //console.log(data)
@@ -219,7 +219,7 @@ function addToHistory(e) {
   let elemUrl = e.target.getAttribute('href');
   let elemTitle = $(e.target).children().children('h4').text();
   let newHistoryObject = { url: elemUrl, title: elemTitle };
-  console.log(history);
+  // console.log(history);
   history.unshift(newHistoryObject);
   if (history.length > 6) {
     history.pop();
@@ -240,12 +240,12 @@ $(function loadHistory() {
 
 //Render next page on button click
 $('#displayResults').on('click', 'button', function (nextId) {
-  console.log('button is clicked');
+  // console.log('button is clicked');
   $('.loading').show();
   let GlobalUrlNext =
     'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects/active?api_key=30898b94-9c49-4566-ae46-904bf7e12207&nextProjectId=' +
     nextPageId;
-  console.log(GlobalUrlNext);
+  // console.log(GlobalUrlNext);
   $.ajax({
     url: GlobalUrlNext,
     method: 'GET',
@@ -267,7 +267,7 @@ $('#backBtn').on('click', backToHome);
 //Function to get user location
 
 $('#getLocationBtn').on('click', function() {
-  console.log('button is clicked');
+  // console.log('button is clicked');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(generatePosition, showError);
   } else {
@@ -295,7 +295,7 @@ function generatePosition(position) {
     method: 'GET',
     dataType: 'JSON',
   }).done(function (userData) {
-    console.log(userData);
+    // console.log(userData);
     // console.log(userData[0].name);
     // console.log(userData[0].country);
     $('#cityInput').val(`${userData[0].name}, ${userData[0].state}, USA`);
@@ -318,26 +318,26 @@ function showError(error) {
 $(function(){
   var queryLink = document.location.search;
   if (queryLink.includes('state')){
+    loadMain();
     let splitForState = queryLink.split('=');
     let splitForCity = splitForState[1].split('&')
     let city = splitForCity[0]
     let state = splitForState[2].toUpperCase();
     //console.log(city, state);
-    loadMain();
     $('#cityInput').val(`${city}, ${state}, USA`);
     $('#localSearchBtn').click();
   } else if (queryLink.includes('type')) {
+    loadMain();
     let firstSplit = queryLink.split('=')
     let type = firstSplit[1]
-    console.log(type);
-    loadMain();
+    //console.log(type);
     let toBeSelected;
     for (let i = 0; i < $('#selector').children().length; i++){
       if (document.getElementById('selector')[i].getAttribute('data-id') == type){
         toBeSelected = document.getElementById('selector')[i];
       }
     }
-    console.log(toBeSelected)
+    //console.log(toBeSelected)
     toBeSelected.selected = 'true';
     $('#globalSearchBtn').click();
   } else {

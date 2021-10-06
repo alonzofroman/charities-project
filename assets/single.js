@@ -24,7 +24,7 @@ function initMap() {
         return response.json();
       })
       .then(function (data) {
-        console.log(data[0]);
+        // console.log(data[0]);
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
         $('.loading').hide()
@@ -106,7 +106,7 @@ function initMap() {
 
 $(function () {
   var pulledState = JSON.parse(localStorage.getItem('pageState'))
-  console.log(pulledState[0].split(', '));
+  // console.log(pulledState[0].split(', '));
   let splitState = pulledState[0].split(', ')
   //console.log(pulledState);
   if (splitState.length === 3) {

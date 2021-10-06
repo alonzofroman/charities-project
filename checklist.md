@@ -15,7 +15,7 @@
 - [Done] Uses modals (doesn't have to, just don't use alerts/promps)
 
 ## Finishing up
-- [ ] Google Font
-- [ ] Polished UI (mobile optimized, too)
+- [Done] Google Font
 - [ ] Good README
+- [ ] Polished UI (mobile optimized, too)
 - [ ] Must be deployed to GitHub pages
