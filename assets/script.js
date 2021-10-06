@@ -161,6 +161,7 @@ function renderGlobalList(data) {
     nextPageId = data.projects.nextProjectId;
     nextBtn = $('<button>')
       .attr('id', 'nextPageBtn')
+      .addClass('searchBtns')
       .text('Next Page')
       .appendTo(resultsList);
   }
