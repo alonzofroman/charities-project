@@ -325,5 +325,8 @@ body {
     width: 100vw;
     height: 20vh;
   }
+  #mainDiv {
+    justify-content: center;
+  }
 }
 
