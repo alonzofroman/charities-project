@@ -289,6 +289,9 @@ body {
   width: 60vw;
 }
 
+
+
+=======
 @media screen and (max-width: 950px){
   #sidebar {
     display: none;
@@ -326,3 +329,4 @@ body {
     height: 20vh;
   }
 }
+
