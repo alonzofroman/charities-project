@@ -12,6 +12,10 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <!--Flickity https://flickity.metafizzy.co/-->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
     <!--Main CSS-->
     <link rel="stylesheet" href="./assets/style.css">
     <title>myCharitySearch</title>
@@ -54,8 +58,8 @@
                     <div class="line"></div>
                 <div id="localSearches">
                     <h3 class="text-2xl">Or search locally...</h3>
-                    <input id="cityInput" class="inputs" placeholder="City...">
-                    <input id="stateInput" class="inputs" maxlength="2" placeholder="State...">
+                    <input id="cityInput" class="inputs" placeholder="City, State">
+                
                     <div class="localButtons">
                         <button id="getLocationBtn" class="searchBtns">Get User Location</button>
                         <button id="localSearchBtn" class="searchBtns">Local Search</button>
@@ -87,6 +91,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--Flickity-->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Google places -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8&libraries=places"></script>
     <!--Main JS-->
     <script src="./assets/script.js"></script>
 </body>

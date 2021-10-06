@@ -69,24 +69,22 @@ function pullLocalCharities(e) {
   e.preventDefault();
   $('.loading').show();
   let citySearch = $('#cityInput').val();
+  console.log(citySearch)
+  console.log(citySearch.split(", "))
   //Force user's state input to uppercase so it is recognized by API
-  let stateSearch = $('#stateInput').val().toUpperCase();
-  let paramsObject = [citySearch, stateSearch]
+
+  let paramsObject = [citySearch]
   currentSearchParams = paramsObject;
   pushSearchToStorage()
   let localUrl;
   //If they left the city blank, just search by state
-  if (citySearch == '') {
+  
     localUrl =
       'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&rated=true&state=' +
-      stateSearch;
-  } else {
-    localUrl =
-      'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&rated=true&state=' +
-      stateSearch +
+      citySearch.split(", ")[1] +
       '&city=' +
-      citySearch;
-  }
+      citySearch.split(", ")[0];
+
   fetch(localUrl)
     .then(function (response) {
       if (response.status != 200) {
@@ -128,11 +126,11 @@ function pullLocalCharities(e) {
 }
 
 $('#localSearchBtn').on('click', function (e) {
-  if ($('#stateInput').val() == '') {
-    generateErrorDiaolog();
-  } else {
+  // if ($('#stateInput').val() == '') {
+  //   generateErrorDiaolog();
+  // } else {
     pullLocalCharities(e);
-  }
+  // }
 });
 
 //Render Global list elements
@@ -346,3 +344,15 @@ $(function(){
     console.log('wudup');
   }
 })
+
+// places apikey: AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8
+
+var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: "us"}
+ };
+
+var input = document.getElementById('cityInput');
+var autocomplete = new google.maps.places.Autocomplete(input,options)
+
+

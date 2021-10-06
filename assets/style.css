@@ -1,7 +1,9 @@
 /* https://colorhunt.co/palette/2121216d9886d9cab3f6f6f6 */
+
 body {
   background: #D9CAB3;
   color: #212121;
+  font-family: 'Inter', sans-serif;
 }
 
 .logo {
