@@ -288,10 +288,10 @@ function generatePosition(position) {
   // console.log(position.coords.longitude);
   let userLat = position.coords.latitude;
   let userLon = position.coords.longitude;
-  console.log('ayeeeee');
+  //console.log('ayeeeee');
   $.ajax({
     url:
-      'http://api.openweathermap.org/geo/1.0/reverse?lat=' + userLat + '&lon=' + userLon + '&appid=f4fa96020f2282301cd8312fc675da98',
+      'https://api.openweathermap.org/geo/1.0/reverse?lat=' + userLat + '&lon=' + userLon + '&appid=f4fa96020f2282301cd8312fc675da98',
     method: 'GET',
     dataType: 'JSON',
   }).done(function (userData) {
