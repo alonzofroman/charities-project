@@ -46,8 +46,8 @@ $(function () {
 
 function loadMain() {
   splashDiv.hide();
-  mainDiv.show();
-  $('#sidebar').show();
+  mainDiv.css('display', 'flex');
+  $('#sidebar').css('display', 'flex');
 }
 
 $('#initializeBtn').on('click', loadMain);
@@ -258,7 +258,7 @@ $('#displayResults').on('click', 'button', function (nextId) {
 function backToHome() {
   mainDiv.hide();
   $('#sidebar').hide();
-  splashDiv.show();
+  splashDiv.css('display', 'flex');
 }
 
 $('#backBtn').on('click', backToHome);
