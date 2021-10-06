@@ -73,7 +73,7 @@ function initMap(){
     let getLonLatUrl;
     if (state == undefined || state == null) {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
-    } else if (city == undefined) {
+    } else if (city == undefined || city == null) {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     } else {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
@@ -95,4 +95,26 @@ function initMap(){
   }
 };
 
+$(function(){
+  var pulledState = JSON.parse(localStorage.getItem('pageState'))
+  //console.log(pulledState);
+  if (pulledState.length === 2){
+    $('#backToMain').attr('href', `./index.html?city=${pulledState[0]}&state=${pulledState[1]}`)
+  } else {
+    $('#backToMain').attr('href', `./index.html?type=${pulledState[0]}`)
+  }
+})
+
 // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+
+
+//in an object
+//in local function save input to city and state
+//in global function save input to parameter
+
+//Save in localStorage user's inputs
+
+//detect back button click
+//with document.referrer
+
+//on back button click, repopulate fields with values and autoclick respective submit

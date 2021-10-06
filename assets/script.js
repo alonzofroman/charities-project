@@ -19,6 +19,7 @@ const mainDiv = $('#mainDiv');
 const resultsList = document.querySelector('#displayResults');
 const historyBox = $('#historyWrapper');
 let history = [];
+let currentSearchParams;
 var nextBtn;
 let nextPageId;
 let globalSelected;
@@ -69,6 +70,9 @@ function pullLocalCharities(e) {
   let citySearch = $('#cityInput').val();
   //Force user's state input to uppercase so it is recognized by API
   let stateSearch = $('#stateInput').val().toUpperCase();
+  let paramsObject = [citySearch, stateSearch]
+  currentSearchParams = paramsObject;
+  pushSearchToStorage()
   let localUrl;
   //If they left the city blank, just search by state
   if (citySearch == '') {
@@ -129,7 +133,7 @@ $('#localSearchBtn').on('click', function (e) {
   }
 });
 
-//REnder Global list elements
+//Render Global list elements
 function renderGlobalList(data) {
   $('.loading').hide();
   resultsList.innerHTML = '';
@@ -167,6 +171,9 @@ function pullGlobalCharities(e) {
   e.preventDefault();
   $('.loading').show();
   globalSelected = $('#selector option:selected').attr('data-id');
+  let paramsObject = [globalSelected];
+  currentSearchParams = paramsObject;
+  pushSearchToStorage()
   //console.log(globalSelected);
   let globalUrl =
     'https://api.globalgiving.org/api/public/projectservice/themes/' +
@@ -186,6 +193,10 @@ function pullGlobalCharities(e) {
 }
 
 $('#globalSearchBtn').on('click', pullGlobalCharities);
+
+function pushSearchToStorage(){
+  localStorage.setItem('pageState', JSON.stringify(currentSearchParams));
+}
 
 //HISTORY
 function renderHistory() {
@@ -304,3 +315,34 @@ function showError(error) {
     });
   }
 }
+
+$(function(){
+  var queryLink = document.location.search;
+  if (queryLink.includes('state')){
+    let splitForState = queryLink.split('=');
+    let splitForCity = splitForState[1].split('&')
+    let city = splitForCity[0]
+    let state = splitForState[2].toUpperCase();
+    //console.log(city, state);
+    loadMain();
+    $('#cityInput').val(city);
+    $('#stateInput').val(state);
+    $('#localSearchBtn').click();
+  } else if (queryLink.includes('type')) {
+    let firstSplit = queryLink.split('=')
+    let type = firstSplit[1]
+    console.log(type);
+    loadMain();
+    let toBeSelected;
+    for (let i = 0; i < $('#selector').children().length; i++){
+      if (document.getElementById('selector')[i].getAttribute('data-id') == type){
+        toBeSelected = document.getElementById('selector')[i];
+      }
+    }
+    console.log(toBeSelected)
+    toBeSelected.selected = 'true';
+    $('#globalSearchBtn').click();
+  } else {
+    console.log('wudup');
+  }
+})
