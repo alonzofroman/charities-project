@@ -52,3 +52,4 @@ This project is licensed under the MIT License
 ## Acknowledgments
 
 * [Google Maps Tutorial from TraversyMedia](https://www.youtube.com/watch?v=Zxf1mnP5zcw&ab_channel=TraversyMedia)
+* [Selector CSS Styling from Naoya on CodePen](https://codepen.io/floral/pen/pbdKo)
