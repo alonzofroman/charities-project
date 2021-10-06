@@ -106,11 +106,13 @@ function initMap() {
 
 $(function () {
   var pulledState = JSON.parse(localStorage.getItem('pageState'))
+  console.log(pulledState[0].split(', '));
+  let splitState = pulledState[0].split(', ')
   //console.log(pulledState);
-  if (pulledState.length === 2) {
-    $('#backToMain').attr('href', `./index.html?city=${pulledState[0]}&state=${pulledState[1]}`)
+  if (splitState.length === 3) {
+    $('#backToMain').attr('href', `./index.html?city=${splitState[0]}&state=${splitState[1]}`)
   } else {
-    $('#backToMain').attr('href', `./index.html?type=${pulledState[0]}`)
+    $('#backToMain').attr('href', `./index.html?type=${splitState[0]}`)
   }
 })
 
