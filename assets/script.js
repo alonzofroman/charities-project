@@ -176,9 +176,7 @@ function pullGlobalCharities(e) {
   pushSearchToStorage()
   //console.log(globalSelected);
   let globalUrl =
-    'https://api.globalgiving.org/api/public/projectservice/themes/' +
-    globalSelected +
-    '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
+    'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects/active?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
   $.ajax({
     url: globalUrl,
     method: 'GET',
@@ -242,9 +240,7 @@ $('#displayResults').on('click', 'button', function (nextId) {
   console.log('button is clicked');
   $('.loading').show();
   let GlobalUrlNext =
-    'https://api.globalgiving.org/api/public/projectservice/themes/' +
-    globalSelected +
-    '/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207&nextProjectId=' +
+    'https://api.globalgiving.org/api/public/projectservice/themes/' + globalSelected + '/projects/active?api_key=30898b94-9c49-4566-ae46-904bf7e12207&nextProjectId=' +
     nextPageId;
   console.log(GlobalUrlNext);
   $.ajax({
