@@ -47,6 +47,7 @@ $(function () {
 function loadMain() {
   splashDiv.hide();
   mainDiv.show();
+  $('#sidebar').show();
 }
 
 $('#initializeBtn').on('click', loadMain);
@@ -77,11 +78,11 @@ function pullLocalCharities(e) {
   //If they left the city blank, just search by state
   if (citySearch == '') {
     localUrl =
-      'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&state=' +
+      'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&rated=true&state=' +
       stateSearch;
   } else {
     localUrl =
-      'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&state=' +
+      'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&rated=true&state=' +
       stateSearch +
       '&city=' +
       citySearch;
@@ -95,6 +96,7 @@ function pullLocalCharities(e) {
     })
     .then(function (data) {
       $('.loading').hide();
+      console.log(data);
       //Remove all previous elements
       resultsList.innerHTML = '';
       //console.log(data)
@@ -161,6 +163,7 @@ function renderGlobalList(data) {
     nextPageId = data.projects.nextProjectId;
     nextBtn = $('<button>')
       .attr('id', 'nextPageBtn')
+      .addClass('searchBtns')
       .text('Next Page')
       .appendTo(resultsList);
   }
@@ -254,6 +257,7 @@ $('#displayResults').on('click', 'button', function (nextId) {
 
 function backToHome() {
   mainDiv.hide();
+  $('#sidebar').hide();
   splashDiv.show();
 }
 

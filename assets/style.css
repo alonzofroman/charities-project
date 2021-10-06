@@ -102,17 +102,28 @@ body {
   height: 100vh;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 #searchResults {
   width: 75vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #sidebar {
+  display: none;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 25vw;
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
   background: #212121;
   color: white;
   box-shadow: 0px 0px 25px #212121;
@@ -121,11 +132,25 @@ body {
 
 #searchWrapper {
   height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#globalSearches, #localSearches {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30%;
+  width: 100%;
 }
 
 .inputs {
   width: 90%;
-  height: 10%;
+  height: 15%;
   margin: 5px;
   border: 1px solid #212121;
   border-radius: 4px;
@@ -176,7 +201,12 @@ body {
 
 #historyWrapper {
   height: 40%;
-  padding: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
 }
 
 .historyBtn {
@@ -187,6 +217,18 @@ body {
   width: 90%;
   text-align: center;
   transition: all 0.2s linear;
+}
+
+#backBtn {
+  background:#F6F6F6;
+  border-radius: 4px;
+  color: #212121;
+  transition: all 0.2s linear;
+}
+
+#backBtn:hover {
+  color: #F6F6F6;
+  background: #212121;
 }
 
 .singleLinks {
@@ -247,4 +289,44 @@ body {
   width: 60vw;
 }
 
+
+
+=======
+@media screen and (max-width: 950px){
+  #sidebar {
+    display: none;
+    width: 100vw;
+    height: 20vh;
+    top: 0;
+  }
+  #searchWrapper {
+    flex-direction: row;
+    height: 100%;
+  }
+  #headerName, .line2, #historyWrapper  {
+    display: none;
+  }
+  .line {
+    width: 1px;
+    height: 100%;
+  }
+  .inputs {
+    height: 25%;
+  }
+  #globalSearches, #localSearches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+  }
+  #searchResults {
+    width: 100vw;
+  }
+  .spaceFiller {
+    width: 100vw;
+    height: 20vh;
+  }
+}
 
