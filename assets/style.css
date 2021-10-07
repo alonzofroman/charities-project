@@ -3,7 +3,7 @@
 body {
   background: #D9CAB3;
   color: #212121;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;;
 }
 
 .logo {
@@ -346,6 +346,10 @@ body {
   color:#333;
   }
 
+  .description {
+    font-size: x-large;
+    margin-top: 45px;
+  }
 
 
 @media screen and (max-width: 950px){
