@@ -24,20 +24,26 @@ var nextBtn;
 let nextPageId;
 let globalSelected;
 
-/*flickity for carousel*/
-var carousel = $('#featuredCarousel').flickity({
+
+///////FLICKITY
+var options = {
   autoPlay: true,
   wrapAround: true,
   cellAlign: 'left',
   contain: true,
-});
+};
+
+/*flickity for carousel*/
+var carousel = $('#featuredCarousel').flickity(options);
 
 var caption = $('.caption');
+
 var flkty = carousel.data('flickity');
 
 carousel.on('select.flickity', function () {
   caption.text(flkty.selectedElement.title);
 });
+////////////
 
 /*global search selector*/
 // $(function() {
@@ -346,12 +352,12 @@ $(function(){
 
 // places apikey: AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8
 
-var options = {
+var searchOptions = {
   types: ['(cities)'],
   componentRestrictions: {country: "us"}
  };
 
 var input = document.getElementById('cityInput');
-var autocomplete = new google.maps.places.Autocomplete(input,options)
+var autocomplete = new google.maps.places.Autocomplete(input,searchOptions)
 
 
