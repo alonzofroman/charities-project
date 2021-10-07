@@ -239,7 +239,7 @@ $(function loadHistory() {
 });
 
 //Render next page on button click
-$('#displayResults').on('click', 'button', function (nextId) {
+$('#displayResults').on('click', '#nextPageBtn', function () {
   // console.log('button is clicked');
   $('.loading').show();
   let GlobalUrlNext =
@@ -281,7 +281,6 @@ $('#getLocationBtn').on('click', function() {
     });
   }
 });
-
 
 function generatePosition(position) {
   // console.log(position.coords.latitude);
