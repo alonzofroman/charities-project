@@ -23,6 +23,7 @@ let currentSearchParams;
 var nextBtn;
 let nextPageId;
 let globalSelected;
+let errorText;
 
 /*flickity for carousel*/
 var carousel = $('#featuredCarousel').flickity({
@@ -57,14 +58,13 @@ $('#initializeBtn').on('click', loadMain);
 //If there was an error, generate an error dialog
 function generateErrorDiaolog() {
   let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
-  let errorText = document.createTextNode(
-    'There was an error with your request. Please try again.'
-  );
   errorDialog.append(errorText);
   $(function () {
     $(errorDialog).dialog();
   });
 }
+
+
 
 //Local charities display
 function pullLocalCharities(e) {
@@ -89,11 +89,23 @@ function pullLocalCharities(e) {
 
   fetch(localUrl)
     .then(function (response) {
-      if (response.status != 200) {
+      console.log(response.status);
+      if (response.status == 400) {
+        errorText = document.createTextNode(
+          'There was an error with your request. Please ensure a proper city name and state code were entered.'
+        );
         generateErrorDiaolog();
       }
+      else if (response.status == 404) {
+        errorText = document.createTextNode(
+          'There are no rated charities in your city.'
+        );
+        generateErrorDiaolog();
+      }
+      else {
       return response.json();
-    })
+    }
+  })
     .then(function (data) {
       $('.loading').hide();
       // console.log(data);
@@ -137,6 +149,7 @@ $('#localSearchBtn').on('click', function (e) {
 
 //Render Global list elements
 function renderGlobalList(data) {
+  console.log(data);
   $('.loading').hide();
   resultsList.innerHTML = '';
   let finalGlobalResults = data.projects.project;
@@ -273,7 +286,7 @@ $('#getLocationBtn').on('click', function() {
   } else {
     let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
     let errorText = document.createTextNode(
-      'This browser does not support geolocation'
+      'This browser does not support geolocation. Please check broser privacy settings.'
     );
     errorDialog.append(errorText);
     $(function () {
@@ -306,7 +319,7 @@ function showError(error) {
   if (error.PERMISSION_DENIED) {
     let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
     let errorText = document.createTextNode(
-      'The user has denied request for Geolocation'
+      'The user has denied request for Geolocation. Please check security settings.'
     );
     errorDialog.append(errorText);
     $(function () {
