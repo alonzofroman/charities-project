@@ -9,13 +9,13 @@
 - [Done] Responds to user input
 - [Done] User input validation (if they type the wrong thing, there’s an error)
 - [Done] Have some sort of repeating element (the list items that will be dynamically generated)
-- [ ] MUST use localStorage ("My Favorite Charities" or maybe just "Recently Searched" list)
+- [Done] MUST use localStorage ("My Favorite Charities" or maybe just "Recently Searched" list)
 
 ## Not super required
 - [Done] Uses modals (doesn't have to, just don't use alerts/promps)
 
 ## Finishing up
 - [Done] Google Font
-- [ ] Good README
-- [ ] Polished UI (mobile optimized, too)
-- [ ] Must be deployed to GitHub pages
+- [Done] Good README
+- [Done] Polished UI (mobile optimized, too)
+- [Done] Must be deployed to GitHub pages
