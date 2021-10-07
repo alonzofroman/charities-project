@@ -137,6 +137,7 @@ $('#localSearchBtn').on('click', function (e) {
 
 //Render Global list elements
 function renderGlobalList(data) {
+  console.log(data);
   $('.loading').hide();
   resultsList.innerHTML = '';
   let finalGlobalResults = data.projects.project;
@@ -306,7 +307,7 @@ function showError(error) {
   if (error.PERMISSION_DENIED) {
     let errorDialog = $('<div>').attr('title', 'Error').appendTo('body');
     let errorText = document.createTextNode(
-      'The user has denied request for Geolocation'
+      'The user has denied request for Geolocation. Please check security settings.'
     );
     errorDialog.append(errorText);
     $(function () {
