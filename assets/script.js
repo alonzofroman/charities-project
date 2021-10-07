@@ -372,5 +372,3 @@ var searchOptions = {
 
 var input = document.getElementById('cityInput');
 var autocomplete = new google.maps.places.Autocomplete(input,searchOptions)
-
-
