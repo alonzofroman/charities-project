@@ -294,8 +294,6 @@ $(function(){
     }
     toBeSelected.selected = 'true';
     $('#globalSearchBtn').click();
-  } else {
-    console.log('wudup');
   }
 });
 

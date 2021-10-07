@@ -276,7 +276,7 @@ body {
   transition: all 0.2s linear;
   position: fixed;
   right: 5%;
-  top: 5%;
+  bottom: 5%;
   z-index: 999;
 }
 
@@ -446,8 +446,8 @@ body {
     width: 70vw;
   }
   .searchBtns {
-    padding: 2px;
-    font-size: 0.75rem;
+    padding: 5px;
+    font-size: 1.2rem;
   }
   .loading {
     font-size: 2rem;
@@ -459,11 +459,17 @@ body {
   .flickity-page-dots {
     display: none;
   }
+  .flickity-slider {
+    height: 25vh;
+  }
+  #featuredCarousel {
+    width: 90vw;
+  }
 }
 
 @media screen and (max-width: 600px){
   .searchBtns {
     padding: 2px;
-    font-size: 0.75rem;
+    font-size: 0.70rem;
   }
 }
