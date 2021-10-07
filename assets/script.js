@@ -11,7 +11,7 @@ let errorText;
 const featuredCarousel = document.querySelector("#featuredCarousel");
 
 // Dynamically changing carousel
-$(function(){
+$(function loadCarousel(){
   let featuredUrl = 'https://api.globalgiving.org/api/public/projectservice/featured/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
   $.ajax({
     url: featuredUrl,
@@ -54,6 +54,7 @@ function loadMain() {
   splashDiv.hide();
   mainDiv.css('display', 'flex');
   $('#sidebar').css('display', 'flex');
+  loadCarousel();
 };
 
 // "Get Started" button
@@ -226,6 +227,7 @@ function backToHome() {
   mainDiv.hide();
   $('#sidebar').hide();
   splashDiv.css('display', 'flex');
+  loadCarousel();
 };
 
 $('#backBtn').on('click', backToHome);
