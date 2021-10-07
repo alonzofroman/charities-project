@@ -29,13 +29,17 @@ body {
 .loading {
   display: none;
   position: fixed;
-  left: 50%;
-  top: 50%;
+  left: 50vw;
+  top: 50vh;
   font-size: 4rem;
   padding: 10px;
   background: #212121;
   color: #f6f6f6;
   border-radius: 10px;
+  width: 50%;
+  height: auto;
+  font-size: 4rem;
+  text-align: center;
 }
 
 #loadingSingle {
@@ -143,6 +147,10 @@ body {
   box-shadow: 0px 0px 25px #212121;
   width: 25vw;
   z-index: 999;
+}
+
+#headerName {
+  width: 90%;
 }
 
 #searchWrapper {
@@ -281,6 +289,13 @@ body {
   border-radius: 5px;
 }
 
+#backBtnContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
 #textDiv {
   padding: 10px;
   border-radius: 5px;
@@ -293,6 +308,10 @@ body {
   color: #212121;
   padding: 15px;
   font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .listItem:hover,
@@ -304,7 +323,7 @@ body {
 
 #map {
   height: 45vh;
-  width: 60vw;
+  width: 100%;
 }
 
 /*styles for selectmenu from https://codepen.io/floral/pen/pbdKo*/
@@ -360,7 +379,7 @@ body {
   margin-top: 45px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 900px) {
   #sidebar {
     width: 100vw;
     height: 20vh;
@@ -411,5 +430,20 @@ body {
   }
   .searchBtns {
     padding: 2px;
+    font-size: 0.75rem;
+  }
+  .loading {
+    font-size: 2rem;
+    left: 25vw;
+  }
+  #backBtn {
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .searchBtns {
+    padding: 2px;
+    font-size: 0.75rem;
   }
 }

@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <!--Main CSS-->
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="icon" href="assets/images/icon.png">
     <title>myCharitySearch</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
     <div id="mainDiv">
         <div id="sidebar" class="flex">
             <div id="searchWrapper">
-                <h3 id="headerName" class="text-3xl sm\:text-2xl">myCharitySearch</h3>
+                <img id="headerName" src="assets/images/mycharitylogoinverted.png">
                 <div id="globalSearches">
                     <h3 class="text-2xl">Search globally</h3>
                     <label class="select-wrap entypo-down-open-mini" for="globalSearch">
@@ -68,7 +69,8 @@
                 </div>
                     <div class="line"></div>
                 <div id="localSearches">
-                    <h3 class="text-2xl">Or search locally (U.S. only)</h3>
+                    <h3 class="text-2xl">Search locally</h3>
+                    <p class="text-xs">(U.S. only)</p>
                     <input id="cityInput" class="inputs" placeholder="City, State">
                     <div class="localButtons">
                         <button id="getLocationBtn" class="searchBtns">Get Location</button>
