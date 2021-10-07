@@ -117,7 +117,7 @@ function pullLocalCharities(e) {
         //save name of charity so it can be pulled later
         let newListLink = $('<a>')
           .addClass('listItem')
-          .attr('href', './single.html?charityname=' + data[i].charityName)
+          .attr('href', './single.html?charityname=' + data[i].charityName + '=' + data[i].mailingAddress.city)
           .appendTo(resultsList);
         let newListItem = $('<li>')
           .addClass('listIgnore')
