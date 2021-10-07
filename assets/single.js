@@ -55,8 +55,8 @@ function initMap() {
         $('<img>').addClass('singleImg').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
         $('<div>').attr('id', 'fundingSection').appendTo(mainDiv);
-        $('<p>').text('Goal: $' + data.project.goal).appendTo($("#fundingSection"));
         $('<p>').text('Current funding: $' + data.project.funding).appendTo($("#fundingSection"));
+        $('<p>').text(`⠀/ ⠀Goal: $${data.project.goal}`).appendTo($("#fundingSection"));
         $('<div>').attr('id', 'textDiv').appendTo(mainDiv);
         $('<p>').addClass('text-center rounded-md').text(data.project.activities).appendTo($("#textDiv"));
         $('<p>').addClass('text-center rounded-md').text(data.project.need).appendTo("#textDiv");
