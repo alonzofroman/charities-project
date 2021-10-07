@@ -24,7 +24,30 @@ var nextBtn;
 let nextPageId;
 let globalSelected;
 let errorText;
+const featuredCarousel = document.querySelector("#featuredCarousel")
 
+$(function(){
+  let featuredUrl =
+  'https://api.globalgiving.org/api/public/projectservice/featured/projects?api_key=30898b94-9c49-4566-ae46-904bf7e12207';
+  $.ajax({
+    url: featuredUrl,
+    method: 'GET',
+    dataType: 'JSON',
+  })
+    .done(function (featuredData) {
+    console.log(featuredData)
+
+    let featuredProject = featuredData.projects.project
+    let featuredSpot = $(featuredCarousel).children(0).children(0).children("div")
+      
+    for (var i = 0; i < 5; i++){
+      featuredSpot[i].setAttribute("title",featuredProject[i].title)
+      featuredSpot[i].childNodes[0].setAttribute("href",featuredProject[i].projectLink)
+      featuredSpot[i].childNodes[0].childNodes[0].setAttribute("src",featuredProject[i].image.imagelink[3].url)
+      
+    }
+    });
+})
 
 ///////FLICKITY
 var options = {
