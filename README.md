@@ -1,12 +1,35 @@
 # myCharitySearch
 
-One paragraph of project description goes here.
+## Project description 
+The purpose of this site is to create a site that features a search function for both local and global charities for the user. We have a dynamically updating carousel of featured charities, and utilize two seperate APIs to search by city name or by charity theme. Results are displayed as list elements and display both charity name and location. Selecting a charity from the list takes the user to a dynamically generated single charity page that features the respective charity's name, mission statement, available images, URL, and a Google Map object displaying its location. 
 
-![Image](./assets/images/siteDemo.gif)
+![Image](./assets/images/charities-theme-demo.gif)
 
 ## Original Wireframe
 
 ![Image](./assets/images/wireframe.jpeg)
+
+## Code Snippet
+
+![Image](./assets/images/charities-code.jpg)
+
+## Steps
+
+- Initial framework of pages
+
+- Functions for seperate API calls
+
+- Populating list elements for search results
+
+- Populating single charity page with dynamically generated elements
+
+- Google Maps feature enabled on single charity pages
+
+- Populating featured charities with dynamically generated charities by API request
+
+- Additional stretch features, including grabbing user location and back pages
+
+- Bug fixes and final stylings
 
 ## Built With
 
@@ -26,12 +49,12 @@ One paragraph of project description goes here.
 
 ## Deployed Link
 
-* [See Live Site](siteLinkHere)
+* [See Live Site](https://alonzofroman.github.io/charities-project/)
 
 ## Authors
 
 * **Alonzo Roman**
-- [Link to Portfolio Site](#)
+- [Link to Portfolio Site](https://alonzofroman.github.io/alonzofroman/)
 - [Link to Github](https://github.com/alonzofroman)
 - [Link to LinkedIn](https://www.linkedin.com/)
 
