@@ -24,6 +24,7 @@ function initMap() {
         return response.json();
       })
       .then(function (data) {
+        // console.log(data[0].irsClassification.nteeType);
         // console.log(data[0]);
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
@@ -32,7 +33,9 @@ function initMap() {
         $('<p>').addClass('text-center rounded-md bg-yellow-100').text(data[0].mission).appendTo(mainDiv);
         $('<p>').text(`Location: ${localCity}, ${localState}`).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
-        $('.singleLinks').hide()
+        $('<div>').attr('id', 'textDiv').appendTo(mainDiv);
+        $('<p>').addClass('text-center rounded-md').text(data[0].irsClassification.nteeType).appendTo($("#textDiv"));
+        // $('.singleLinks').hide()
         //console.log(localState);
         //generate map
         theMap = $('<div>').attr('id', 'map').appendTo(mainDiv);
@@ -59,7 +62,7 @@ function initMap() {
         $('<p>').text(`Location: ${globalCity}, ${data.project.contactCountry}`).appendTo(mainDiv);
         $('<img>').addClass('singleImg').attr('src', data.project.image.imagelink[4].url).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data.project.projectLink).appendTo(mainDiv);
-        $('.singleLinks').hide()
+        // $('.singleLinks').hide()
         $('<div>').attr('id', 'fundingSection').appendTo(mainDiv);
         $('<p>').text('Goal: $' + data.project.goal).appendTo($("#fundingSection"));
         $('<p>').text('Current funding: $' + data.project.funding).appendTo($("#fundingSection"));
