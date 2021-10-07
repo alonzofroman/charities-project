@@ -1,9 +1,17 @@
 /* https://colorhunt.co/palette/2121216d9886d9cab3f6f6f6 */
 
 body {
-  background: #D9CAB3;
+  background: #d9cab3;
   color: #212121;
-  font-family: 'Inter', sans-serif;;
+  font-family: 'Inter', sans-serif;
+}
+
+#splashDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .logo {
@@ -26,7 +34,7 @@ body {
   font-size: 4rem;
   padding: 10px;
   background: #212121;
-  color: #F6F6F6;
+  color: #f6f6f6;
   border-radius: 10px;
 }
 
@@ -38,7 +46,7 @@ body {
 .line {
   width: 90%;
   height: 1px;
-  background: #F6F6F6;
+  background: #f6f6f6;
 }
 
 #featuredCarousel {
@@ -65,9 +73,9 @@ body {
   object-fit: cover;
 }
 
-.flickity-page-dots {
+/* .flickity-page-dots {
   bottom: -22px;
-}
+} */
 
 .flickity-page-dots .dot {
   height: 4px;
@@ -95,8 +103,8 @@ body {
 }
 
 #initializeBtn:hover {
-  border-color: #6D9886;
-  color: #6D9886;
+  border-color: #6d9886;
+  color: #6d9886;
   transform: scale(1.1);
 }
 
@@ -146,28 +154,30 @@ body {
   align-items: center;
 }
 
-#globalSearches, #localSearches {
+#globalSearches,
+#localSearches {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 30%;
   width: 100%;
+  text-align: center;
 }
 
 .inputs {
   width: 90%;
-  height: 30%;
+  height: 35%;
   margin: 5px;
   border: 1px solid #212121;
   border-radius: 4px;
   color: #212121;
-  background: #F6F6F6;
+  background: #f6f6f6;
 }
 
 .searchBtns {
   padding: 10px;
-  background: #6D9886;
+  background: #6d9886;
   border-radius: 10px;
   border: 1px solid #212121;
   transition: all 0.2s linear;
@@ -175,8 +185,8 @@ body {
 
 .searchBtns:hover {
   background: #212121;
-  color: #6D9886;
-  border-color: #6D9886;
+  color: #6d9886;
+  border-color: #6d9886;
 }
 
 .localButtons {
@@ -190,7 +200,7 @@ body {
 .listItem {
   width: 60vw;
   height: auto;
-  background: #6D9886;
+  background: #6d9886;
   border-radius: 10px;
   text-align: center;
   margin: 10px;
@@ -213,13 +223,12 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 .historyBtn {
   padding: 5px;
   margin-top: 2px;
-  background: #6D9886;
+  background: #6d9886;
   border-radius: 5px;
   width: 90%;
   text-align: center;
@@ -227,22 +236,22 @@ body {
 }
 
 #backBtn {
-  background:#F6F6F6;
+  background: #f6f6f6;
   border-radius: 4px;
   color: #212121;
   transition: all 0.2s linear;
 }
 
 #backBtn:hover {
-  color: #F6F6F6;
+  color: #f6f6f6;
   background: #212121;
 }
 
 .singleLinks {
   padding: 15px;
   border-radius: 10px;
-  background: #6D9886;
-  color: #F6F6F6;
+  background: #6d9886;
+  color: #f6f6f6;
   font-size: 1.5rem;
   transition: all 0.2s linear;
   position: fixed;
@@ -275,18 +284,20 @@ body {
 #textDiv {
   padding: 10px;
   border-radius: 5px;
-  background: #F6F6F6;
+  background: #f6f6f6;
   font-size: 1.2rem;
 }
 
 #fundingSection {
-  background: #6D9886;
+  background: #6d9886;
   color: #212121;
   padding: 15px;
   font-size: 1.5rem;
 }
 
-.listItem:hover, .historyBtn:hover, .singleLinks:hover {
+.listItem:hover,
+.historyBtn:hover,
+.singleLinks:hover {
   background: #57bd91;
   transform: scale(1.05);
 }
@@ -297,62 +308,59 @@ body {
 }
 
 /*styles for selectmenu from https://codepen.io/floral/pen/pbdKo*/
-.select-wrap{
-  position:relative;
-  overflow:hidden;
-  display:inline-block;
-  min-width:192px;
-  min-width:12em;
-  background-color:#ffffff;
-  background-image:-webkit-linear-gradient(top, #ffffff 0%, #dfe0d9 100%);
-  background-image:linear-gradient(top, #ffffff 0%, #dfe0d9 100%);
-  border:1px solid #c0c0c0;
-  color:#333;
-  }
-  
-  .select-wrap select{
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
-  appearance:none;
-  position:relative;
-  z-index:2;
-  display:block;
-  width:200%;/* fallback non calc support */
-  width:-webkit-calc(100% + 5em);
-  margin:0;
-  padding:11px 35px 11px 11px;
-  padding:.6875rem 2.1875rem .6875rem .6875rem;
-  background:transparent;
-  border:0;
-  outline:none;
-  font-size:16px;
-  font-size:1rem;
-  line-height:1.5;
-  }
-  
-  .entypo-down-open-mini:before{
-  font-family:'entypo',sans-serif;
-  position:absolute;
-  z-index:1;
-  top:50%;
-  right:12px;
-  right:.75rem;
-  margin-top:-8px;
-  margin-top:-.5rem;
-  font-size:16px;
-  font-size:1rem;
-  line-height:1;
-  color:#333;
-  }
+.select-wrap {
+  overflow: hidden;
+  display: inline-block;
+  min-width: 80%;
+  background-color: #ffffff;
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #dfe0d9 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #dfe0d9 100%);
+  border: 1px solid #c0c0c0;
+  color: #333;
+}
 
-  .description {
-    font-size: x-large;
-    margin-top: 45px;
-  }
+.select-wrap select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  appearance: none;
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 200%; /* fallback non calc support */
+  width: -webkit-calc(100% + 5em);
+  margin: 0;
+  padding: 11px 35px 11px 11px;
+  padding: 0.6875rem 2.1875rem 0.6875rem 0.6875rem;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
+.entypo-down-open-mini:before {
+  font-family: 'entypo', sans-serif;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 12px;
+  right: 0.75rem;
+  margin-top: -8px;
+  margin-top: -0.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1;
+  color: #333;
+}
 
-@media screen and (max-width: 950px){
+.description {
+  font-size: x-large;
+  margin-top: 45px;
+}
+
+@media screen and (max-width: 950px) {
   #sidebar {
     width: 100vw;
     height: 20vh;
@@ -362,7 +370,9 @@ body {
     flex-direction: row;
     height: 100%;
   }
-  #headerName, .line2, #historyWrapper  {
+  #headerName,
+  .line2,
+  #historyWrapper {
     display: none;
   }
   .line {
@@ -370,9 +380,14 @@ body {
     height: 100%;
   }
   .inputs {
-    height: 25%;
+    height: 30%;
+    width: 80%;
   }
-  #globalSearches, #localSearches {
+  .select-wrap{
+    max-width: 50%;
+  }
+  #globalSearches,
+  #localSearches {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -391,5 +406,10 @@ body {
   #mainDiv {
     justify-content: center;
   }
+  #featuredCarousel {
+    height: 25vh;
+  }
+  .searchBtns {
+    padding: 2px;
+  }
 }
-
