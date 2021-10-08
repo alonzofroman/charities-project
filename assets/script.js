@@ -54,7 +54,7 @@ function loadMain() {
   splashDiv.hide();
   mainDiv.css('display', 'flex');
   $('#sidebar').css('display', 'flex');
-  loadCarousel();
+  // loadCarousel(); BAD BAD BAD
 };
 
 // "Get Started" button
@@ -296,6 +296,8 @@ $(function(){
     }
     toBeSelected.selected = 'true';
     $('#globalSearchBtn').click();
+  } else {
+    console.log('wudup');
   }
 });
 
