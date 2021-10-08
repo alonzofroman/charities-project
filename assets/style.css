@@ -336,6 +336,7 @@ body {
 #map {
   height: 45vh;
   width: 100%;
+  min-height: 275px;
 }
 
 /*styles for selectmenu from https://codepen.io/floral/pen/pbdKo*/
@@ -398,7 +399,7 @@ body {
 @media screen and (max-width: 900px) {
   #sidebar {
     width: 100vw;
-    height: 20vh;
+    height: 25vh;
     top: 0;
   }
   #searchWrapper {
@@ -446,8 +447,8 @@ body {
     width: 70vw;
   }
   .searchBtns {
-    padding: 5px;
-    font-size: 1.2rem;
+    padding: 10px;
+    font-size: 1.3rem;
   }
   .loading {
     font-size: 2rem;
@@ -469,7 +470,7 @@ body {
 
 @media screen and (max-width: 600px){
   .searchBtns {
-    padding: 2px;
-    font-size: 0.70rem;
+    padding: 5px;
+    font-size: 1rem;
   }
 }
