@@ -22,12 +22,11 @@ $(function loadCarousel(){
     $('.caption').show();
     let featuredProject = featuredData.projects.project
     let featuredSpot = $(featuredCarousel).children(0).children(0).children("div")
-    for (let i = 0; i < 10; i++){
+    _(10).for((i)=>{
       featuredSpot[i].setAttribute("title",featuredProject[i].title)
       featuredSpot[i].childNodes[0].setAttribute("href",featuredProject[i].projectLink)
-      featuredSpot[i].childNodes[0].childNodes[0].setAttribute("src",featuredProject[i].image.imagelink[3].url)
-      
-    }
+      featuredSpot[i].childNodes[0].childNodes[0].setAttribute("src",featuredProject[i].image.imagelink[3].url)  
+    })
   });
 });
 
@@ -52,8 +51,8 @@ carousel.on('select.flickity', function() {
 // Load in the main content, hide the splash content
 function loadMain() {
   splashDiv.hide();
-  mainDiv.css('display', 'flex');
-  $('#sidebar').css('display', 'flex');
+  e('#mainDiv').showFlex();
+  e('#sidebar').showFlex();
   // loadCarousel(); BAD BAD BAD
 };
 
@@ -99,20 +98,30 @@ function pullLocalCharities(e) {
     .then(function (data) {
       $('.loading').hide();
       // Remove all previous elements
-      resultsList.innerHTML = '';
+      resultsList.innerHTML = ''
       // Dynamically generate list items
-      for (let i = 0; i < data.length; i++) {
-        // Save name of charity so it can be pulled later
+      // for (let i = 0; i < data.length; i++) {
+      //   // Save name of charity so it can be pulled later
+        // let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?charityname=' + data[i].charityName + '=' + data[i].mailingAddress.city).appendTo(resultsList);
+        // let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
+        // let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(data[i].charityName);
+        // newListItem.append(listTitle);
+        // // If there is no city in the data, don't create location
+        // if (data[i].mailingAddress.city != null) {
+        //   let listLocation = $('<p>').addClass('listIgnore').text(`${data[i].mailingAddress.city}, ${data[i].mailingAddress.stateOrProvince}`);
+        //   newListItem.append(listLocation);
+        // }
+      // };
+      _(data).forEach((i)=>{
         let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?charityname=' + data[i].charityName + '=' + data[i].mailingAddress.city).appendTo(resultsList);
         let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
         let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(data[i].charityName);
         newListItem.append(listTitle);
-        // If there is no city in the data, don't create location
         if (data[i].mailingAddress.city != null) {
           let listLocation = $('<p>').addClass('listIgnore').text(`${data[i].mailingAddress.city}, ${data[i].mailingAddress.stateOrProvince}`);
           newListItem.append(listLocation);
         }
-      };
+      })
     });
 };
 
@@ -130,14 +139,22 @@ function renderGlobalList(data) {
   $('.loading').hide();
   resultsList.innerHTML = '';
   let finalGlobalResults = data.projects.project;
-  for (let i = 0; i < 10; i++) {
+  // for (let i = 0; i < 10; i++) {
+    // let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList);
+    // let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
+    // let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(finalGlobalResults[i].title);
+    // newListItem.append(listTitle);
+    // let listLocation = $('<p>').addClass('listIgnore').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`);
+    // newListItem.append(listLocation);
+  // };
+  _(10).for((i)=>{
     let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList);
     let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
     let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(finalGlobalResults[i].title);
     newListItem.append(listTitle);
     let listLocation = $('<p>').addClass('listIgnore').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`);
     newListItem.append(listLocation);
-  };
+  })
   if (data.projects.hasNext === true) {
     //Generate next page button
     nextPageId = data.projects.nextProjectId;
@@ -170,16 +187,21 @@ function pullGlobalCharities(e) {
 $('#globalSearchBtn').on('click', pullGlobalCharities);
 
 function pushSearchToStorage(){
-  localStorage.setItem('pageState', JSON.stringify(currentSearchParams));
+  _(currentSearchParams).toLocalStorage('pageState');
+  // localStorage.setItem('pageState', JSON.stringify(currentSearchParams));
 }
 
 // Render history items
 function renderHistory() {
   if (history.length > 0) {
-    for (let i = 0; i < history.length; i++) {
+    // for (let i = 0; i < history.length; i++) {
+    //   let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
+    //   newHistoryBtn.attr('href', history[i].url);
+    // };
+    _(history).forEach((i)=>{
       let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
       newHistoryBtn.attr('href', history[i].url);
-    };
+    })
   }
 };
 
@@ -194,7 +216,8 @@ function addToHistory(e) {
   if (history.length > 6) {
     history.pop();
   }
-  localStorage.setItem('clickHistory', JSON.stringify(history));
+  // localStorage.setItem('clickHistory', JSON.stringify(history));
+  _(history).toLocalStorage('clickHistory');
   renderHistory();
 };
 
@@ -203,7 +226,8 @@ $('#displayResults').on('click', 'a', addToHistory);
 // Load and render history on page load
 $(function loadHistory() {
   if (localStorage.getItem('clickHistory') !== null) {
-    let pulledHistory = JSON.parse(localStorage.getItem('clickHistory'));
+    // let pulledHistory = JSON.parse(localStorage.getItem('clickHistory'));
+    let pulledHistory = _().getLocalStorage('clickHistory');
     history = pulledHistory;
     renderHistory();
   }
@@ -226,7 +250,7 @@ $('#displayResults').on('click', '#nextPageBtn', function () {
 function backToHome() {
   mainDiv.hide();
   $('#sidebar').hide();
-  splashDiv.css('display', 'flex');
+  e('#splashDiv').showFlex();
   loadCarousel();
 };
 

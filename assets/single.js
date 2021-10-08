@@ -17,12 +17,8 @@ function initMap() {
   var getLocalCharity = function (urlArray) {
     let nameOfCharity = urlArray[1];
     let charityUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&search=' + nameOfCharity + '&city=' + urlArray[2];
-    console.log(charityUrl);
-    fetch(charityUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
+    //console.log(charityUrl);
+    quickFetch(charityUrl, (function (data) {
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
         $('.loading').hide()
@@ -35,7 +31,7 @@ function initMap() {
         // Generate map
         theMap = $('<div>').attr('id', 'map').appendTo(mainDiv);
         getLonLat(localCity, localState);
-      })
+      }))
   }
 
   // If GlobalCharity, load its info
@@ -69,7 +65,7 @@ function initMap() {
   // Get lon and lat of location either from global charity or local charity
   function getLonLat(city, state) {
     let getLonLatUrl;
-    if (state == undefined || state == null) {
+    if (state == undefined || state == null) {r
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     } else if (city == undefined || city == null) {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
@@ -100,7 +96,8 @@ function initMap() {
 
 // Set back to main button href
 $(function () {
-  var pulledState = JSON.parse(localStorage.getItem('pageState'))
+  // var pulledState = JSON.parse(localStorage.getItem('pageState'))
+  var pulledState = _().getLocalStorage('pageState');
   let splitState = pulledState[0].split(', ')
   if (splitState.length === 3) {
     $('#backToMain').attr('href', `./index.html?city=${splitState[0]}&state=${splitState[1]}`)
