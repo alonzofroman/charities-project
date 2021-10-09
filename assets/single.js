@@ -65,7 +65,7 @@ function initMap() {
   // Get lon and lat of location either from global charity or local charity
   function getLonLat(city, state) {
     let getLonLatUrl;
-    if (state == undefined || state == null) {r
+    if (state == undefined || state == null) {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`
     } else if (city == undefined || city == null) {
       getLonLatUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${state},US&limit=5&appid=6f7fcdfd5baf071bea56c4dc9633ff39`

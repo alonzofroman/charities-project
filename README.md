@@ -33,6 +33,28 @@ The purpose of this site is to create a site that features a search function for
 
 - Bug fixes and final stylings
 
+## CSS Framework
+
+- Tailwind CSS was used to supplement our site. We used class names for our text in html in order to maintain styles throughout the site. 
+
+## Screen Sizes
+![Image](./assets/images/screen-size.gif)
+
+## User Story
+
+- I want a list of featured charities so that I can see what’s hot in the charity game
+- I want to see a get started button so that I may begin my charity searching quest
+- I want to input my city and state so that I can find charities in my area
+- I want to submit my city and state and see a list of local charities so that I can choose a local charity
+- I want to be able to click a charity so that I can see more information about it
+- I want to see a map so that I can see the location of the charity in a visual way
+- I want to input a type of charity so that I can choose what type of global charity I want
+- I want to see a list of global charities based on cause so that I can find more information about them
+
+## Single Charity Page
+
+![Image](./assets/images/single-charity.jpg)
+
 ## Built With
 
 * [Meyer Web CSS Reset](https://meyerweb.com/eric/tools/css/reset/)
