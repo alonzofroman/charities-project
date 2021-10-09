@@ -126,11 +126,7 @@ function pullLocalCharities(e) {
 };
 
 $('#localSearchBtn').on('click', function(e) {
-  // if ($('#stateInput').val() == '') {
-  //   generateErrorDiaolog();
-  // } else {
     pullLocalCharities(e);
-  // }
 });
 
 //Render global charity list elements
@@ -139,14 +135,7 @@ function renderGlobalList(data) {
   $('.loading').hide();
   resultsList.innerHTML = '';
   let finalGlobalResults = data.projects.project;
-  // for (let i = 0; i < 10; i++) {
-    // let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList);
-    // let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
-    // let listTitle = $('<h4>').addClass('listIgnore text-2xl').text(finalGlobalResults[i].title);
-    // newListItem.append(listTitle);
-    // let listLocation = $('<p>').addClass('listIgnore').text(`${finalGlobalResults[i].contactCity}, ${finalGlobalResults[i].contactCountry}`);
-    // newListItem.append(listLocation);
-  // };
+ 
   _(10).for((i)=>{
     let newListLink = $('<a>').addClass('listItem').attr('href', './single.html?globalcharityid=' + finalGlobalResults[i].id).appendTo(resultsList);
     let newListItem = $('<li>').addClass('listIgnore').appendTo(newListLink);
@@ -188,16 +177,11 @@ $('#globalSearchBtn').on('click', pullGlobalCharities);
 
 function pushSearchToStorage(){
   _(currentSearchParams).toLocalStorage('pageState');
-  // localStorage.setItem('pageState', JSON.stringify(currentSearchParams));
 }
 
 // Render history items
 function renderHistory() {
   if (history.length > 0) {
-    // for (let i = 0; i < history.length; i++) {
-    //   let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
-    //   newHistoryBtn.attr('href', history[i].url);
-    // };
     _(history).forEach((i)=>{
       let newHistoryBtn = $('<a>').addClass('historyBtn').text(history[i].title).appendTo(historyBox);
       newHistoryBtn.attr('href', history[i].url);
@@ -259,7 +243,6 @@ $('#backBtn').on('click', backToHome);
 
 //Get user location
 $('#getLocationBtn').on('click', function() {
-  // console.log('button is clicked');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(generatePosition, showError);
   } else {
@@ -332,20 +315,3 @@ var autocomplete = new google.maps.places.Autocomplete(input, {
   componentRestrictions: {country: "us"}
 });
 
-/* API to search charity by state/city/zipcode: CHARITYNAVIGATOR
-https://api.data.charitynavigator.org/v2
-1 month free trial
-API KEY: f5d879810f81ef14e848b61de031964f */
-
-/* Global Giving: https://www.globalgiving.org/api/methods/get-all-projects-for-a-theme/
-API KEY: 30898b94-9c49-4566-ae46-904bf7e12207 */
-
-/* get lon lat https://api.openweathermap.org/geo/1.0/direct?q=' + cityToSearch + '&limit=5&appid=
-API KEY: 6f7fcdfd5baf071bea56c4dc9633ff39 */
-
-/* Plug in lat and lon of charity into Google Maps API to show the charity's exact location:
-Great tutorial: https://www.youtube.com/watch?v=Zxf1mnP5zcw&ab_channel=TraversyMedia
-Docs :https://developers.google.com/maps/documentation/javascript/overview?hl=en_US
-API KEY: AIzaSyBGyCeq_y1j0ceJhDdpK7A8DDU-0wu-uSU */
-
-// places apikey: AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8

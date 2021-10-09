@@ -17,7 +17,6 @@ function initMap() {
   var getLocalCharity = function (urlArray) {
     let nameOfCharity = urlArray[1];
     let charityUrl = 'https://api.data.charitynavigator.org/v2/Organizations?app_id=0a9ad98a&app_key=f5d879810f81ef14e848b61de031964f&search=' + nameOfCharity + '&city=' + urlArray[2];
-    //console.log(charityUrl);
     quickFetch(charityUrl, (function (data) {
         const localCity = data[0].mailingAddress.city
         const localState = data[0].mailingAddress.stateOrProvince
@@ -28,6 +27,7 @@ function initMap() {
         $('<p>').addClass('text-center rounded-md').text(data[0].irsClassification.nteeType).appendTo($("#textDiv"));
         $('<p>').addClass('text-center rounded-md bg-yellow-100').html(data[0].mission).appendTo(mainDiv);
         $('<a>').addClass('singleLinks').text('Link to Charity').attr('href', data[0].charityNavigatorURL).appendTo(mainDiv);
+        
         // Generate map
         theMap = $('<div>').attr('id', 'map').appendTo(mainDiv);
         getLonLat(localCity, localState);
@@ -105,31 +105,3 @@ $(function () {
     $('#backToMain').attr('href', `./index.html?type=${splitState[0]}`)
   }
 });
-
-// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
-
-/* AAPKd82ceb4f7aed4c209143ce5c94b8b49b8UyBbWZfvk8SSWUoRqHCW12-n_B4K9RhkctxfT6oPP4Ajg4sb-LhIGvn6MvggU6c */
-
-//in an object
-//in local function save input to city and state
-//in global function save input to parameter
-
-//Save in localStorage user's inputs
-
-//detect back button click
-//with document.referrer
-
-//on back button click, repopulate fields with values and autoclick respective submit
-
-
-
-// Use this later after pushing more data into local singles
-
-// window.addEventListener('scroll', function(){
-//   if (window.scrollY >= 150)  {
-//       $('.singleLinks').show()
-//   }
-//   else {
-//     $('.singleLinks').hide()
-//   }
-// });

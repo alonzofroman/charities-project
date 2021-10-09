@@ -90,10 +90,6 @@ body {
   object-fit: cover;
 }
 
-/* .flickity-page-dots {
-  bottom: -22px;
-} */
-
 .flickity-page-dots .dot {
   height: 4px;
   width: 40px;
